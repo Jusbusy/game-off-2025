@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://270pg2n2u7ud"]
+
+[ext_resource type="Script" uid="uid://da1eoycqb3jxt" path="res://unit.gd" id="1_btf8p"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_btf8p"]
+size = Vector2(90, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctwoc"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btf8p"]
+
+[node name="Unit" type="CharacterBody2D"]
+script = ExtResource("1_btf8p")
+speed = 30.0
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_btf8p")
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("RectangleShape2D_ctwoc")
+
+[node name="DummyCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_btf8p")
+disabled = true
+
+[connection signal="area_entered" from="Collision" to="." method="_on_collision_area_entered"]
