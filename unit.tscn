@@ -1,29 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://270pg2n2u7ud"]
+[gd_scene load_steps=4 format=3 uid="uid://270pg2n2u7ud"]
 
 [ext_resource type="Script" uid="uid://da1eoycqb3jxt" path="res://unit.gd" id="1_btf8p"]
+[ext_resource type="Texture2D" uid="uid://f16gwyyvytur" path="res://Attack Sprites/RockAttackIcon.png" id="2_ctwoc"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_btf8p"]
 size = Vector2(90, 90)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctwoc"]
-size = Vector2(50, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_btf8p"]
-
-[node name="Unit" type="CharacterBody2D"]
+[node name="Unit" type="Node2D"]
 script = ExtResource("1_btf8p")
-speed = 30.0
 
-[node name="ColorRect" type="Sprite2D" parent="."]
+[node name="MainSprite" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_btf8p")
 
-[node name="Collision" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
-shape = SubResource("RectangleShape2D_ctwoc")
-
-[node name="DummyCollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_btf8p")
-disabled = true
-
-[connection signal="area_entered" from="Collision" to="." method="_on_collision_area_entered"]
+[node name="AttackIcon" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ctwoc")
