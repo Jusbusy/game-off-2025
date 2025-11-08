@@ -2,15 +2,13 @@
 
 [ext_resource type="Script" uid="uid://da1eoycqb3jxt" path="res://unit.gd" id="1_btf8p"]
 [ext_resource type="Texture2D" uid="uid://f16gwyyvytur" path="res://Attack Sprites/RockAttackIcon.png" id="2_ctwoc"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_btf8p"]
-size = Vector2(90, 90)
+[ext_resource type="Texture2D" uid="uid://c2ck1svw21cin" path="res://Friendly.png" id="2_davkp"]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_btf8p")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_btf8p")
+texture = ExtResource("2_davkp")
 
 [node name="AttackIcon" type="Sprite2D" parent="."]
 texture_filter = 1
