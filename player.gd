@@ -1,7 +1,7 @@
 extends GridElement
 
 func _ready():
-	init_position(Vector2i(0, 0))
+	init(Vector2i(0, 0), true)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("end_turn"):
@@ -20,7 +20,7 @@ func _process(_delta):
 		var unit_instance = Global.unit.instantiate()
 		get_tree().root.add_child(unit_instance)
 		unit_instance.is_enemy = false
-		unit_instance.init_position(Vector2i(0, grid_pos.y))
+		unit_instance.init(Vector2i(0, grid_pos.y))
 	
 	if Input.is_action_just_pressed("order_attack_rock"):
 		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.ROCK)
@@ -41,3 +41,7 @@ func call_on_interactable(_func):
 		if elem && !elem.is_enemy:
 			_func.call(elem)
 		pos = Vector2i(-pos.y, pos.x) # rotate pos 90deg CW
+	
+	var _elem = get_local(Vector2i.ZERO)
+	if _elem && !_elem.is_enemy:
+		_func.call(_elem)

@@ -1,12 +1,16 @@
 class_name GridElement extends Node2D
 
 var grid_pos
+var is_ghost
 
 func _process_turn():
 	pass
 
-func init_position(pos : Vector2i):
-	Global.grid[pos.x][pos.y] = self
+func init(pos : Vector2i, _is_ghost : bool = false):
+	is_ghost = _is_ghost
+	
+	if !is_ghost:
+		Global.grid[pos.x][pos.y] = self
 	position = Global.grid_origin + Global.grid_spacing * pos
 	grid_pos = pos
 
@@ -15,8 +19,9 @@ func move(target_pos : Vector2i):
 		print("OOB Move Occurred")
 		return
 	
-	Global.grid[grid_pos.x][grid_pos.y] = null
-	Global.grid[target_pos.x][target_pos.y] = self
+	if !is_ghost:
+		Global.grid[grid_pos.x][grid_pos.y] = null
+		Global.grid[target_pos.x][target_pos.y] = self
 	position = Global.grid_origin + Global.grid_spacing * target_pos
 	grid_pos = target_pos
 	

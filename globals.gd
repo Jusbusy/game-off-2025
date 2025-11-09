@@ -19,7 +19,7 @@ func _ready():
 	var unit_instance = unit.instantiate()
 	get_tree().root.add_child.call_deferred(unit_instance)
 	unit_instance.is_enemy = true
-	unit_instance.init_position(Vector2i(9, 2))
+	unit_instance.init(Vector2i(9, 2))
 		
 func process_turn():
 	var grid_copy = grid.duplicate(true)
