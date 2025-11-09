@@ -50,6 +50,15 @@ const scissors_icon = preload("res://Attack Sprites/ScissorsAttackIcon.png")
 
 func _process_turn():
 	if state == State.ADVANCE:
+		if is_enemy && grid_pos.x == 0:
+			print("Enemy scored")
+			self.queue_free()
+			return
+		if !is_enemy && grid_pos.x == Global.grid_size.x - 1:
+			print("Player scored")
+			self.queue_free()
+			return
+		
 		var mov_dir = Vector2i(-1 if is_enemy else 1, 0)
 		var elem = get_local(mov_dir)
 		
