@@ -17,10 +17,13 @@ func _process(_delta):
 		move(grid_pos + Vector2i(0, 1))
 	
 	if Input.is_action_just_pressed("order_summon"):
-		var unit_instance = Global.unit.instantiate()
-		get_tree().root.add_child(unit_instance)
-		unit_instance.is_enemy = false
-		unit_instance.init(Vector2i(0, grid_pos.y))
+		if Global.grid[0][grid_pos.y]:
+			print("Summon position is occupied")
+		else:
+			var unit_instance = Global.unit.instantiate()
+			get_tree().root.add_child(unit_instance)
+			unit_instance.is_enemy = false
+			unit_instance.init(Vector2i(0, grid_pos.y))
 	
 	if Input.is_action_just_pressed("order_attack_rock"):
 		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.ROCK)
