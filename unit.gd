@@ -1,6 +1,20 @@
 class_name Unit extends GridElement
 
-var is_enemy = false
+@export var friendly_sprite : Texture2D
+@export var enemy_sprite : Texture2D
+
+var is_enemy: bool:
+	get:
+		return is_enemy
+	set(value):
+		is_enemy = value
+		if value:
+			get_node("MainSprite").texture = enemy_sprite
+		else:
+			get_node("MainSprite").texture = friendly_sprite
+		
+
+
 var max_health = 1.0
 
 enum AttackForm { ROCK, PAPER, SCISSORS }
