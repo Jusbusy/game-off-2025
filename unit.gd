@@ -55,10 +55,14 @@ func _process_turn():
 			return
 			
 	elif state == State.LANE_UP:
-		move(grid_pos + Vector2i(0, -1))
+		var elem = get_local(Vector2i(0, -1))
+		if !elem:
+			move(grid_pos + Vector2i(0, -1))
 		state = State.ADVANCE
 	elif state == State.LANE_DOWN:
-		move(grid_pos + Vector2i(0, 1))
+		var elem = get_local(Vector2i(0, 1))
+		if !elem:
+			move(grid_pos + Vector2i(0, 1))
 		state = State.ADVANCE
 
 #func _process(_delta):
