@@ -7,16 +7,16 @@ func _process(_delta):
 	if Input.is_action_just_pressed("end_turn"):
 		Global.process_turn()
 	
-	if Input.is_action_just_pressed("move_left"):
+	if Input.is_action_just_pressed("move_left") && Global.use_ap(1):
 		move(grid_pos + Vector2i(-1, 0))
-	if Input.is_action_just_pressed("move_right"):
+	if Input.is_action_just_pressed("move_right") && Global.use_ap(1):
 		move(grid_pos + Vector2i(1, 0))
-	if Input.is_action_just_pressed("move_up"):
+	if Input.is_action_just_pressed("move_up") && Global.use_ap(1):
 		move(grid_pos + Vector2i(0, -1))
-	if Input.is_action_just_pressed("move_down"):
+	if Input.is_action_just_pressed("move_down") && Global.use_ap(1):
 		move(grid_pos + Vector2i(0, 1))
 	
-	if Input.is_action_just_pressed("order_summon"):
+	if Input.is_action_just_pressed("order_summon") && Global.use_ap(1):
 		if Global.grid[0][grid_pos.y]:
 			print("Summon position is occupied")
 		else:
@@ -25,16 +25,16 @@ func _process(_delta):
 			unit_instance.is_enemy = false
 			unit_instance.init(Vector2i(0, grid_pos.y))
 	
-	if Input.is_action_just_pressed("order_attack_rock"):
+	if Input.is_action_just_pressed("order_attack_rock") && Global.use_ap(1):
 		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.ROCK)
-	if Input.is_action_just_pressed("order_attack_paper"):
+	if Input.is_action_just_pressed("order_attack_paper") && Global.use_ap(1):
 		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.PAPER)
-	if Input.is_action_just_pressed("order_attack_scissors"):
+	if Input.is_action_just_pressed("order_attack_scissors") && Global.use_ap(1):
 		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.SCISSORS)
 	
-	if Input.is_action_just_pressed("order_lane_up"):
+	if Input.is_action_just_pressed("order_lane_up") && Global.use_ap(1):
 		call_on_interactable(func(i_unit) : i_unit.state = Unit.State.LANE_UP)
-	if Input.is_action_just_pressed("order_lane_down"):
+	if Input.is_action_just_pressed("order_lane_down") && Global.use_ap(1):
 		call_on_interactable(func(i_unit) : i_unit.state = Unit.State.LANE_DOWN)
 
 func call_on_interactable(_func):

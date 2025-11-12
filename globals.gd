@@ -4,6 +4,13 @@ var rng = RandomNumberGenerator.new()
 
 const unit = preload("res://unit.tscn")
 
+var ap_label:
+	get:
+		var node = get_tree().root.get_node("Game/APLabel")
+		if !node:
+			print("Attempted to access APLabel, but could not find it")
+		return node
+
 #const lane_spacing = 112
 #const top_lane_pos = 88
 #const lane_count = 5
@@ -16,10 +23,19 @@ var grid = []
 
 var turn_count = 0
 
+const max_player_ap = 5
+var player_ap: int:
+	get:
+		return player_ap
+	set(value):
+		player_ap = value
+		ap_label.text = "AP: %d" % value
+
 func _ready():
 	for i in range(grid_size.x):
 		grid.append([])
 		grid[i].resize(grid_size.y)
+	player_ap = max_player_ap
 
 func process_turn():
 	var grid_copy = grid.duplicate(true)
@@ -44,3 +60,10 @@ func process_turn():
 			unit_instance.attack_form = rng.randi() % 3
 	
 	turn_count += 1
+	player_ap = max_player_ap # reset player ap
+	
+func use_ap(amt):
+	if player_ap < amt:
+		return false
+	player_ap -= amt
+	return true

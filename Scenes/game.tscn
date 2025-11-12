@@ -18,3 +18,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+
+[node name="APLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "AP: "
