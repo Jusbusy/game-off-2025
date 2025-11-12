@@ -15,7 +15,25 @@ var is_enemy: bool:
 		
 
 
-var max_health = 1.0
+var max_health = 4
+var health: int:
+	get:
+		return health
+	set(value):
+		health = value
+		if value == 0:
+			self.queue_free()
+			return
+		match(value):
+			1:
+				get_node("HealthBarSprite").texture = health_bar_1
+			2:
+				get_node("HealthBarSprite").texture = health_bar_2
+			3:
+				get_node("HealthBarSprite").texture = health_bar_3
+			4:
+				get_node("HealthBarSprite").texture = health_bar_4
+
 
 enum AttackForm { ROCK, PAPER, SCISSORS }
 var attack_form: AttackForm:
@@ -30,8 +48,6 @@ var attack_form: AttackForm:
 				get_node("AttackIcon").texture = paper_icon
 			AttackForm.SCISSORS:
 				get_node("AttackIcon").texture = scissors_icon
-			
-
 
 enum State {ADVANCE, LANE_UP, LANE_DOWN}
 var state = State.ADVANCE
@@ -40,13 +56,13 @@ const rock_icon = preload("res://Attack Sprites/RockAttackIcon.png")
 const paper_icon = preload("res://Attack Sprites/PaperAttackIcon.png")
 const scissors_icon = preload("res://Attack Sprites/ScissorsAttackIcon.png")
 
-#var mov_speed = 0
-#var target_lane_pos = 30.0 * 5
+const health_bar_1 = preload("res://Health Bar Sprites/HealthBar1.png")
+const health_bar_2 = preload("res://Health Bar Sprites/HealthBar2.png")
+const health_bar_3 = preload("res://Health Bar Sprites/HealthBar3.png")
+const health_bar_4 = preload("res://Health Bar Sprites/HealthBar4.png")
 
-
-#func _ready():
-	##target_lane_pos = position.y
-	#pass
+func _ready():
+	health = max_health
 
 func _process_turn():
 	if state == State.ADVANCE:
@@ -65,16 +81,15 @@ func _process_turn():
 		if !elem:
 			move(grid_pos + mov_dir)
 			return
-		if is_enemy != elem.is_enemy:
+		if is_enemy != elem.is_enemy: # Attacking
 			var enemy_attack_form = elem.attack_form
 			if attack_form == enemy_attack_form:
+				elem.health -= 1
 				return
 			if attack_form == AttackForm.ROCK && enemy_attack_form == AttackForm.SCISSORS || \
 			   attack_form == AttackForm.PAPER && enemy_attack_form == AttackForm.ROCK || \
 			   attack_form == AttackForm.SCISSORS && enemy_attack_form == AttackForm.PAPER:
-				elem.queue_free()
-			else:
-				self.queue_free()
+				elem.health -= 1
 			return
 			
 	elif state == State.LANE_UP:
