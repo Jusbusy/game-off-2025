@@ -51,6 +51,7 @@ var enemy_base_health: int:
 		enemy_base_health = value
 		enemy_base_health_label.text = "Enemy Base: %d" % value
 
+const turn_ap = 3
 var player_ap: int:
 	get:
 		return player_ap
@@ -59,6 +60,13 @@ var player_ap: int:
 		ap_label.text = "AP: %d" % value
 
 var death_queue = []
+
+const hand_size = 3
+
+var deck = [CardMove.new(), CardMove.new(), CardMove.new()]
+var draw = []
+var hand = []
+var selected_card = -1
 
 func _ready():
 	for i in range(grid_size.x):
@@ -86,12 +94,37 @@ func _process(_delta):
 				unit_instance.init(Vector2i(grid_size.x - 1, spawn_y))
 				unit_instance.attack_form = rng.randi() % 3
 			
+			draw_cards()
 			turn_phase = TurnPhase.CARD
 		
 		TurnPhase.CARD: # Handle player cards
-			if turn_ended:
-				turn_ended = false
-				turn_phase = TurnPhase.BATTLE
+			if !turn_ended:
+				if selected_card == -1:
+					if Input.is_action_just_pressed("select_card_1") && hand.size() >= 1:
+						selected_card = 0
+					elif Input.is_action_just_pressed("select_card_2") && hand.size() >= 2:
+						selected_card = 1
+					elif Input.is_action_just_pressed("select_card_3") && hand.size() >= 3:
+						selected_card = 2
+					else:
+						return
+				
+				var card = deck[hand[selected_card]]
+				if card.cost > player_ap:
+					return
+				
+				if Input.is_action_just_pressed("cancel"):
+					card.reset_selection()
+					selected_card = -1
+				
+				if !card.update():
+					hand.remove_at(selected_card)
+					selected_card = -1
+				
+				return
+			
+			turn_ended = false
+			turn_phase = TurnPhase.BATTLE
 			
 		TurnPhase.BATTLE: # Handle battles
 			for col in grid:
@@ -133,6 +166,7 @@ func _process(_delta):
 					player_base_health -= elem.health
 					elem.queue_free()
 			
+			player_ap = turn_ap
 			turn_count += 1
 			turn_phase = TurnPhase.SPAWN
 
@@ -161,3 +195,15 @@ func choose_enemy_spawn_pos():
 var turn_ended = false
 func process_turn():
 	turn_ended = true
+
+func draw_cards():
+	while(hand.size() < hand_size && hand.size() != deck.size()):
+		if draw.size() == 0:
+			draw = range(deck.size())
+			draw = draw.filter(func(x): return !hand.has(x))
+			draw.shuffle()
+		hand.append(draw.pop_back())
+
+func get_mouse_tile():
+	var mouse_pos = get_viewport().get_mouse_position()
+	return Vector2i((mouse_pos - Vector2(grid_origin)) / grid_spacing + Vector2(0.5, 0.5))

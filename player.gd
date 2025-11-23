@@ -23,18 +23,6 @@ func _process(_delta):
 			var unit_instance = Global.unit.instantiate()
 			get_tree().root.add_child(unit_instance)
 			unit_instance.init(Vector2i(0, grid_pos.y))
-	
-	if Input.is_action_just_pressed("order_attack_rock") && Global.use_ap(1):
-		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.ROCK)
-	if Input.is_action_just_pressed("order_attack_paper") && Global.use_ap(1):
-		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.PAPER)
-	if Input.is_action_just_pressed("order_attack_scissors") && Global.use_ap(1):
-		call_on_interactable(func(i_unit) : i_unit.attack_form = Unit.AttackForm.SCISSORS)
-	
-	if Input.is_action_just_pressed("order_lane_up") && Global.use_ap(1):
-		call_on_interactable(func(i_unit) : i_unit.state = Unit.State.LANE_UP)
-	if Input.is_action_just_pressed("order_lane_down") && Global.use_ap(1):
-		call_on_interactable(func(i_unit) : i_unit.state = Unit.State.LANE_DOWN)
 
 func call_on_interactable(_func):
 	var pos = Vector2i(0, 1)
