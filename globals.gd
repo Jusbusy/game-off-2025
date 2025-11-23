@@ -64,14 +64,12 @@ func _ready():
 	for i in range(grid_size.x):
 		grid.append([])
 		grid[i].resize(grid_size.y)
-	#player_ap = max_player_ap
 	player_base_health = 10
 	enemy_base_health = 10
 	player_ap = 3
 	turn_phase = TurnPhase.SPAWN
 
 func _process(_delta):
-	#print(turn_phase)
 	match(turn_phase):
 		TurnPhase.SPAWN: # Handle unit spawns
 			for spawn in spawn_freqs:
@@ -104,11 +102,14 @@ func _process(_delta):
 			turn_phase = TurnPhase.MOVE
 		
 		TurnPhase.MOVE: # Handle unit movements
+			var furthest_friendly_col = 0
 			for x in range(grid_size.x): # Move player units
-				var col = grid[grid_size.x - 1 - x]
-				for elem in col:
+				var col = grid_size.x - 1 - x
+				for elem in grid[col]:
 					if elem && !elem.enemy:
-						elem._try_move()
+						if col > furthest_friendly_col:
+							furthest_friendly_col = col
+						elem._try_move(col < furthest_friendly_col)
 			for x in range(grid_size.x): # Move enemy units
 				var col = grid[x]
 				for elem in col:
@@ -160,34 +161,3 @@ func choose_enemy_spawn_pos():
 var turn_ended = false
 func process_turn():
 	turn_ended = true
-	#
-	#
-	#var grid_copy = grid.duplicate(true)
-	#for col in grid_copy:
-		#for elem in col:
-			#if elem:
-				#elem._process_turn()
-	#
-	## Enemy spawning
-	#if turn_count % 2 == 0:
-		#var enemy_spawn_col = grid[grid_size.x - 1]
-		#var open_spawn_spaces = []
-		#for i in range(enemy_spawn_col.size()):
-			#if !enemy_spawn_col[i]:
-				#open_spawn_spaces.append(i)
-		#if open_spawn_spaces.size() != 0:
-			#var spawn_space = open_spawn_spaces.pick_random()
-			#var unit_instance = unit.instantiate()
-			#get_tree().root.add_child.call_deferred(unit_instance)
-			#unit_instance.is_enemy = true
-			#unit_instance.init(Vector2i(grid_size.x - 1, spawn_space))
-			#unit_instance.attack_form = rng.randi() % 3
-	#
-	#turn_count += 1
-	#player_ap = max_player_ap # reset player ap
-	
-#func use_ap(amt):
-	#if player_ap < amt:
-		#return false
-	#player_ap -= amt
-	#return true

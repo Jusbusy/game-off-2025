@@ -67,7 +67,7 @@ func _try_attack():
 	else:
 		elem.health -= 1
 	
-func _try_move():
+func _try_move(allow_auto_move = true):
 	var elem = get_local(forward)
-	if !elem || (elem.health == 0 && enemy != elem.enemy):
+	if (!elem && allow_auto_move) || (elem && elem.health == 0 && enemy != elem.enemy):
 		move(grid_pos + forward)
