@@ -7,22 +7,21 @@ func _process(_delta):
 	if Input.is_action_just_pressed("end_turn"):
 		Global.process_turn()
 	
-	if Input.is_action_just_pressed("move_left") && Global.use_ap(1):
+	if Input.is_action_just_pressed("move_left"):
 		move(grid_pos + Vector2i(-1, 0))
-	if Input.is_action_just_pressed("move_right") && Global.use_ap(1):
+	if Input.is_action_just_pressed("move_right"):
 		move(grid_pos + Vector2i(1, 0))
-	if Input.is_action_just_pressed("move_up") && Global.use_ap(1):
+	if Input.is_action_just_pressed("move_up"):
 		move(grid_pos + Vector2i(0, -1))
-	if Input.is_action_just_pressed("move_down") && Global.use_ap(1):
+	if Input.is_action_just_pressed("move_down"):
 		move(grid_pos + Vector2i(0, 1))
 	
-	if Input.is_action_just_pressed("order_summon") && Global.use_ap(1):
+	if Input.is_action_just_pressed("order_summon"):
 		if Global.grid[0][grid_pos.y]:
 			print("Summon position is occupied")
 		else:
 			var unit_instance = Global.unit.instantiate()
 			get_tree().root.add_child(unit_instance)
-			unit_instance.is_enemy = false
 			unit_instance.init(Vector2i(0, grid_pos.y))
 	
 	if Input.is_action_just_pressed("order_attack_rock") && Global.use_ap(1):
