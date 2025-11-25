@@ -3,6 +3,7 @@ extends Node
 var rng = RandomNumberGenerator.new()
 
 const unit = preload("res://Scenes/Friendlies/f_melee.tscn")
+const card_button = preload("res://UI/CardButton.tscn")
 
 var player_base_health_label:
 	get:
@@ -24,10 +25,17 @@ var ap_label:
 		if !node:
 			print("Attempted to access APLabel, but could not find it")
 		return node
+		
+var card_button_container:
+	get:
+		var node = get_tree().root.get_node("Game/CanvasLayer/GameUI/Panel/Panel/CardButtonContainer")
+		if !node:
+			print("Attempted to access CardButtonContainer, but could not find it")
+		return node
 
-const grid_spacing = 112
+const grid_spacing = Vector2i(210, 70)
 const grid_origin = Vector2i(88, 88)
-const grid_size = Vector2i(10, 5)
+const grid_size = Vector2i(5, 5)
 
 var grid = []
 
@@ -119,6 +127,7 @@ func _process(_delta):
 				
 				if !card.update():
 					hand.remove_at(selected_card)
+					card_button_container.get_child(selected_card).queue_free()
 					selected_card = -1
 				
 				return
@@ -202,8 +211,15 @@ func draw_cards():
 			draw = range(deck.size())
 			draw = draw.filter(func(x): return !hand.has(x))
 			draw.shuffle()
-		hand.append(draw.pop_back())
+		var drawn_card = draw.pop_back()
+		hand.append(drawn_card)
+		
+		var card_button_instance = card_button.instantiate()
+		card_button_container.add_child.call_deferred(card_button_instance)
+		card_button_instance.icon = deck[drawn_card].icon
+		card_button_instance.get_node("NameLabel").text = deck[drawn_card].name
+		card_button_instance.pressed.connect(func(): selected_card = card_button_instance.get_index())
 
 func get_mouse_tile():
 	var mouse_pos = get_viewport().get_mouse_position()
-	return Vector2i((mouse_pos - Vector2(grid_origin)) / grid_spacing + Vector2(0.5, 0.5))
+	return Vector2i((mouse_pos - Vector2(grid_origin)) / Vector2(grid_spacing) + Vector2(0.5, 0.5))

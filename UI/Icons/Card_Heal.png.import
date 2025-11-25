@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc54gqusuffg1"
-path="res://.godot/imported/32x32_Card_Move.png-4fd68a4b7d4f08ab27bcdabad404ff40.ctex"
+uid="uid://8cjfxul8yl5n"
+path="res://.godot/imported/Card_Heal.png-d78e9e27201b2fb5d54aa0af25663a55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Icons/32x32_Card_Move.png"
-dest_files=["res://.godot/imported/32x32_Card_Move.png-4fd68a4b7d4f08ab27bcdabad404ff40.ctex"]
+source_file="res://UI/Icons/Card_Heal.png"
+dest_files=["res://.godot/imported/Card_Heal.png-d78e9e27201b2fb5d54aa0af25663a55.ctex"]
 
 [params]
 

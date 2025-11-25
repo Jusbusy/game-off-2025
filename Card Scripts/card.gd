@@ -5,6 +5,17 @@ class_name Card
 # selections
 # handle effect when played
 
+var icon:
+	get:
+		return get_icon()
+func get_icon():
+	return null
+var name: String:
+	get:
+		return get_name()
+func get_name() -> String:
+	return ""
+
 var cost: int:
 	get:
 		return get_cost()

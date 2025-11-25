@@ -1,5 +1,10 @@
 class_name CardMove extends Card
 
+func get_icon():
+	return load("res://UI/Icons/Card_Move.png")
+func get_name():
+	return "Move"
+
 func get_cost():
 	return 1
 func get_selection_rules():

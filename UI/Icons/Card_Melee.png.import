@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dipfrx4gkqm55"
-path="res://.godot/imported/32x32_Card_Melee.png-c21073b93911cfcf24a30a1a59d802e7.ctex"
+path="res://.godot/imported/Card_Melee.png-1b938de939cbd0c9b0db2b4c66144a80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Icons/32x32_Card_Melee.png"
-dest_files=["res://.godot/imported/32x32_Card_Melee.png-c21073b93911cfcf24a30a1a59d802e7.ctex"]
+source_file="res://UI/Icons/Card_Melee.png"
+dest_files=["res://.godot/imported/Card_Melee.png-1b938de939cbd0c9b0db2b4c66144a80.ctex"]
 
 [params]
 
