@@ -71,7 +71,7 @@ var death_queue = []
 
 const hand_size = 3
 
-var deck = [CardMove.new(), CardMove.new(), CardMove.new()]
+var deck = [CardUnitMelee.new(), CardHeal.new(), CardMove.new(), CardDivide.new()]
 var draw = []
 var hand = []
 var selected_card = -1
