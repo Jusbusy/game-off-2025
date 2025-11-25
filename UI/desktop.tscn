@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dosxtqqkhvkeu"]
+
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_nh4s2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6no7a"]
+bg_color = Color(0.8431839, 0.8431839, 0.84318376, 1)
+
+[node name="Desktop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8662212, 0.5463828, 0.7908754, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6no7a")
+
+[node name="Button" type="Button" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 132.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="Window" type="Window" parent="."]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(755, 435)
+visible = false

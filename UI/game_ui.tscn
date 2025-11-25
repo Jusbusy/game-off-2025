@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjie4tlcbrgxb"]
+
+[ext_resource type="PackedScene" uid="uid://cihnt244oywvg" path="res://UI/CardButton.tscn" id="1_mp46i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gijn"]
+bg_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp46i"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -216.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gijn")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 27.5
+offset_right = 589.0
+offset_bottom = 187.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_mp46i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Button" parent="Panel/Panel/HBoxContainer" instance=ExtResource("1_mp46i")]
+layout_mode = 2
+
+[node name="Button2" parent="Panel/Panel/HBoxContainer" instance=ExtResource("1_mp46i")]
+layout_mode = 2

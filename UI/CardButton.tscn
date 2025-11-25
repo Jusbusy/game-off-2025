@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cihnt244oywvg"]
+
+[ext_resource type="Texture2D" uid="uid://crwwmge8ygqwc" path="res://UI/Icons/32x32_Card_Divide.png" id="1_axw4u"]
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="2_bgnkh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfjql"]
+bg_color = Color(0.5294118, 0.5294118, 0.5294118, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0rig"]
+
+[node name="Card" type="Button"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 160)
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+icon = ExtResource("1_axw4u")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -16.554993
+offset_right = 1.0
+offset_bottom = 6.4450073
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bgnkh")
+text = "Card Name.tht"
+horizontal_alignment = 1
