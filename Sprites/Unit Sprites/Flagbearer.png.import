@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2ck1svw21cin"
-path="res://.godot/imported/Friendly.png-28ffea5ccb16b8fad11d72c9f9cf45a2.ctex"
+uid="uid://m111nq3uuptd"
+path="res://.godot/imported/Flagbearer.png-ba2e55a7848ba1e650f45b30d84a7622.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Friendly.png"
-dest_files=["res://.godot/imported/Friendly.png-28ffea5ccb16b8fad11d72c9f9cf45a2.ctex"]
+source_file="res://Sprites/Unit Sprites/Flagbearer.png"
+dest_files=["res://.godot/imported/Flagbearer.png-ba2e55a7848ba1e650f45b30d84a7622.ctex"]
 
 [params]
 

@@ -42,9 +42,9 @@ var attack_form: AttackForm:
 enum State {ADVANCE, LANE_UP, LANE_DOWN}
 var state = State.ADVANCE
 
-const rock_icon = preload("res://Attack Sprites/RockAttackIcon.png")
-const paper_icon = preload("res://Attack Sprites/PaperAttackIcon.png")
-const scissors_icon = preload("res://Attack Sprites/ScissorsAttackIcon.png")
+const rock_icon = preload("res://Sprites/Attack Sprites/RockAttackIcon.png")
+const paper_icon = preload("res://Sprites/Attack Sprites/PaperAttackIcon.png")
+const scissors_icon = preload("res://Sprites/Attack Sprites/ScissorsAttackIcon.png")
 
 const health_bar_1 = preload("res://Health Bar Sprites/HealthBar1.png")
 const health_bar_2 = preload("res://Health Bar Sprites/HealthBar2.png")

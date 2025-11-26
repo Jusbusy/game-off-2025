@@ -2,7 +2,6 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-const unit = preload("res://Scenes/Friendlies/f_melee.tscn")
 const card_button = preload("res://UI/CardButton.tscn")
 
 var player_base_health_label:
@@ -96,7 +95,7 @@ func _process(_delta):
 				if spawn_y == null:
 					continue
 					
-				var unit_res = load("res://Scenes/Enemies/" + spawn[0] + ".tscn")
+				var unit_res = load("res://Units/Enemies/" + spawn[0] + ".tscn")
 				var unit_instance = unit_res.instantiate()
 				get_tree().root.add_child.call_deferred(unit_instance)
 				unit_instance.init(Vector2i(grid_size.x - 1, spawn_y))
@@ -106,7 +105,7 @@ func _process(_delta):
 			turn_phase = TurnPhase.CARD
 		
 		TurnPhase.CARD: # Handle player cards
-			if !turn_ended:
+			if !Input.is_action_just_pressed("end_turn"):
 				if selected_card == -1:
 					if Input.is_action_just_pressed("select_card_1") && hand.size() >= 1:
 						selected_card = 0
@@ -122,9 +121,6 @@ func _process(_delta):
 							var elem = grid[select.x][select.y]
 							if elem && !elem.enemy && use_ap(1):
 								elem.change_attack()
-							#if check_selection(_select_id, select):
-								#_curr_selections.append(select)
-								#_select_id += 1
 						return
 				
 				var card = deck[hand[selected_card]]

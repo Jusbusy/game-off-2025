@@ -15,7 +15,7 @@ func init(pos : Vector2i, _is_ghost : bool = false):
 	grid_pos = pos
 
 func move(target_pos : Vector2i):
-	if target_pos.x < 0 || target_pos.y < 0 || target_pos.x >= Global.grid_size.x || target_pos.y >= Global.grid_size.y:
+	if !Rect2i(Vector2i.ZERO, Global.grid_size).has_point(target_pos):
 		print("OOB Move Occurred")
 		return
 	
@@ -27,6 +27,6 @@ func move(target_pos : Vector2i):
 	
 func get_local(local_pos : Vector2i):
 	var target_pos = grid_pos + local_pos
-	if target_pos.x < 0 || target_pos.y < 0 || target_pos.x >= Global.grid_size.x || target_pos.y >= Global.grid_size.y:
-		return null
-	return Global.grid[target_pos.x][target_pos.y]
+	if Rect2i(Vector2i.ZERO, Global.grid_size).has_point(target_pos):
+		return Global.grid[target_pos.x][target_pos.y]
+	return null

@@ -1,10 +1,6 @@
 @abstract
 class_name Card
 
-# card data: object, desc, cost
-# selections
-# handle effect when played
-
 var icon:
 	get:
 		return get_icon()
@@ -21,13 +17,12 @@ var cost: int:
 		return get_cost()
 func get_cost() -> int:
 	return 0
-#var selection_rules # [{area: ..., adjacents: ..., flags: }]
-var selection_rules: Array:
+	 
+var selection_rules: Array: # [{area: ..., adjacents: ..., flags: }]
 	get:
 		return get_selection_rules()
 func get_selection_rules() -> Array:
 	return []
-# Array of flags + text for selection (area select?)
 
 const SLCT_EMPTY = 1 << 0
 const SLCT_FRIEND = 1 << 1
@@ -83,8 +78,6 @@ func check_selection(id: int, pos: Vector2i):
 		for flag in rules["flags"]:
 			if flag & selected_flags == 0:
 				return false
-		#if rules["flags"] & selected_flags != rules["flags"]:
-			#return false
 	
 	# Check if in valid adjacent tile
 	if rules.has("adjacents"):

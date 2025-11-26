@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwqr2opw1e16q"
-path="res://.godot/imported/ScissorsAttackIcon.png-cc89c7c344f0e69a84178d90268c4476.ctex"
+path="res://.godot/imported/ScissorsAttackIcon.png-b02214d13ca6d207a1168915b95918aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Attack Sprites/ScissorsAttackIcon.png"
-dest_files=["res://.godot/imported/ScissorsAttackIcon.png-cc89c7c344f0e69a84178d90268c4476.ctex"]
+source_file="res://Sprites/Attack Sprites/ScissorsAttackIcon.png"
+dest_files=["res://.godot/imported/ScissorsAttackIcon.png-b02214d13ca6d207a1168915b95918aa.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg57fanurxxfs"
-path="res://.godot/imported/Enemy.png-b2aedbdcb836f57d2b30bf9e08439a5a.ctex"
+uid="uid://6v0hgxspxhwx"
+path="res://.godot/imported/PaperAttackIcon.png-a1ef63309645f9c4e9fbdbab40a6705f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy.png"
-dest_files=["res://.godot/imported/Enemy.png-b2aedbdcb836f57d2b30bf9e08439a5a.ctex"]
+source_file="res://Sprites/Attack Sprites/PaperAttackIcon.png"
+dest_files=["res://.godot/imported/PaperAttackIcon.png-a1ef63309645f9c4e9fbdbab40a6705f.ctex"]
 
 [params]
 
