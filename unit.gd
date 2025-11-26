@@ -71,3 +71,12 @@ func _try_move(allow_auto_move = true):
 	var elem = get_local(forward)
 	if (!elem && allow_auto_move) || (elem && elem.health == 0 && enemy != elem.enemy):
 		move(grid_pos + forward)
+
+func change_attack():
+	match attack_form:
+		AttackForm.ROCK:
+			attack_form = AttackForm.PAPER
+		AttackForm.PAPER:
+			attack_form = AttackForm.SCISSORS
+		AttackForm.SCISSORS:
+			attack_form = AttackForm.ROCK

@@ -46,7 +46,7 @@ func update():
 	
 	if Input.is_action_just_pressed("select"):
 		var select = Global.get_mouse_tile()
-		if check_selection(_select_id, select):
+		if select != null && check_selection(_select_id, select):
 			_curr_selections.append(select)
 			_select_id += 1
 	

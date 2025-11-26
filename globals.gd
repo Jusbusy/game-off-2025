@@ -115,6 +115,16 @@ func _process(_delta):
 					elif Input.is_action_just_pressed("select_card_3") && hand.size() >= 3:
 						selected_card = 2
 					else:
+						if Input.is_action_just_pressed("select"):
+							var select = Global.get_mouse_tile()
+							if select == null:
+								return
+							var elem = grid[select.x][select.y]
+							if elem && !elem.enemy && use_ap(1):
+								elem.change_attack()
+							#if check_selection(_select_id, select):
+								#_curr_selections.append(select)
+								#_select_id += 1
 						return
 				
 				var card = deck[hand[selected_card]]
@@ -221,5 +231,15 @@ func draw_cards():
 		card_button_instance.pressed.connect(func(): selected_card = card_button_instance.get_index())
 
 func get_mouse_tile():
-	var mouse_pos = get_viewport().get_mouse_position()
-	return Vector2i((mouse_pos - Vector2(grid_origin)) / Vector2(grid_spacing) + Vector2(0.5, 0.5))
+	var mouse_pos = get_viewport().get_mouse_position() 
+	var mouse_tile = Vector2i((mouse_pos - Vector2(grid_origin)) / Vector2(grid_spacing) + Vector2(0.5, 0.5))
+	
+	if Rect2i(Vector2i.ZERO, grid_size).has_point(mouse_tile):
+		return mouse_tile
+	return null
+	
+func use_ap(amt: int):
+	if player_ap < amt:
+		return false
+	player_ap -= amt
+	return true

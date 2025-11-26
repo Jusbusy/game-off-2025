@@ -18,9 +18,13 @@ func do_effect():
 	var div_pos = _curr_selections[1]
 	
 	var unit = Global.grid[unit_pos.x][unit_pos.y]
+	var unit_health = unit.health
+	if unit_health <= 1:
+		return
+	
 	var new_unit_instance = unit.duplicate()
 	Global.get_tree().root.add_child(new_unit_instance)
 	new_unit_instance.init(div_pos)
 	
-	unit.health = unit.health / 2 + unit.health % 2
-	new_unit_instance.health /= 2
+	unit.health = unit_health / 2 + unit_health % 2
+	new_unit_instance.health = unit_health / 2
