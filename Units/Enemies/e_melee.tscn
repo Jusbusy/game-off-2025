@@ -1,18 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7kkijsv8bgvi"]
+[gd_scene load_steps=10 format=3 uid="uid://b7kkijsv8bgvi"]
 
 [ext_resource type="Script" uid="uid://da1eoycqb3jxt" path="res://unit.gd" id="1_xo38n"]
-[ext_resource type="Texture2D" uid="uid://cg57fanurxxfs" path="res://Sprites/Unit Sprites/Enemy.png" id="2_yuoie"]
+[ext_resource type="Texture2D" uid="uid://1epdsv8crshr" path="res://Sprites/Unit Sprites/1024x1024_DreamSheep_SpriteSheet.png" id="2_xo38n"]
 [ext_resource type="Texture2D" uid="uid://f16gwyyvytur" path="res://Sprites/Attack Sprites/RockAttackIcon.png" id="3_d5b6v"]
 [ext_resource type="Texture2D" uid="uid://dlvarjgfoh5je" path="res://Health Bar Sprites/HealthBar4.png" id="4_w7606"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuoie"]
+atlas = ExtResource("2_xo38n")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5b6v"]
+atlas = ExtResource("2_xo38n")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7606"]
+atlas = ExtResource("2_xo38n")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlnjh"]
+atlas = ExtResource("2_xo38n")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hsi5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuoie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5b6v")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7606")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlnjh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_xo38n")
 enemy = true
 
-[node name="MainSprite" type="Sprite2D" parent="."]
+[node name="MainSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_yuoie")
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"attack"
 
 [node name="AttackIcon" type="Sprite2D" parent="."]
 texture_filter = 1

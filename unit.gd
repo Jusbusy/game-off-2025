@@ -54,6 +54,10 @@ const health_bar_4 = preload("res://Health Bar Sprites/HealthBar4.png")
 func _ready():
 	health = max_health
 
+func _process(_delta):
+	if !get_node("MainSprite").is_playing():
+		get_node("MainSprite").play("idle")
+
 func _try_attack():
 	var elem = get_local(forward)
 	if !elem || enemy == elem.enemy:
@@ -66,6 +70,8 @@ func _try_attack():
 		elem.health -= 2
 	else:
 		elem.health -= 1
+	
+	play_blocking_animation("attack")
 	
 func _try_move(allow_auto_move = true):
 	var elem = get_local(forward)
@@ -80,3 +86,12 @@ func change_attack():
 			attack_form = AttackForm.SCISSORS
 		AttackForm.SCISSORS:
 			attack_form = AttackForm.ROCK
+			
+func play_blocking_animation(name):
+	get_node("MainSprite").play(name)
+	
+	Global.blocking_animations += 1
+	get_node("MainSprite").animation_finished.connect(
+		func(): Global.blocking_animations -= 1,
+		CONNECT_ONE_SHOT
+	)

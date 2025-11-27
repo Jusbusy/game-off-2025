@@ -40,6 +40,7 @@ var grid = []
 
 enum TurnPhase { SPAWN, CARD, BATTLE, MOVE, BASE }
 var turn_phase
+var blocking_animations = 0
 var turn_count = 0
 
 var spawn_freqs = [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
@@ -85,6 +86,9 @@ func _ready():
 	turn_phase = TurnPhase.SPAWN
 
 func _process(_delta):
+	if blocking_animations != 0:
+		return
+	
 	match(turn_phase):
 		TurnPhase.SPAWN: # Handle unit spawns
 			for spawn in spawn_freqs:
