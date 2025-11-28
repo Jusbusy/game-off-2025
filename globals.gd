@@ -177,13 +177,18 @@ func _process(_delta):
 			
 			for elem in grid[grid_size.x - 1]:
 				if elem && !elem.enemy:
-					print(elem.health)
-					enemy_base_health -= elem.health
-					elem.queue_free()
+					elem.play_blocking_animation("attack", 
+						func():
+							enemy_base_health -= elem.health
+							elem.queue_free()
+					)
 			for elem in grid[0]:
 				if elem && elem.enemy:
-					player_base_health -= elem.health
-					elem.queue_free()
+					elem.play_blocking_animation("attack", 
+						func():
+							player_base_health -= elem.health
+							elem.queue_free()
+					)
 			
 			player_ap = turn_ap
 			turn_count += 1

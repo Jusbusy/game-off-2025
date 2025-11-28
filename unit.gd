@@ -99,12 +99,14 @@ func change_attack():
 		AttackForm.SCISSORS:
 			attack_form = AttackForm.ROCK
 			
-func play_blocking_animation(anim_name):
+func play_blocking_animation(anim_name: String, callback = null):
 	Global.blocking_animations += 1
 	get_node("MainSprite").play(anim_name)
 	
 	get_node("MainSprite").animation_finished.connect(
-		func(): Global.blocking_animations -= 1,
+		func(): 
+			Global.blocking_animations -= 1
+			if callback: callback.call(),
 		CONNECT_ONE_SHOT
 	)
 
