@@ -73,10 +73,22 @@ func _try_attack():
 	
 	play_blocking_animation("attack")
 	
-func _try_move(allow_auto_move = true):
+func _try_move_turn(allow_auto_move = true):
+	if health <= 0:
+		return
 	var elem = get_local(forward)
 	if (!elem && allow_auto_move) || (elem && elem.health == 0 && enemy != elem.enemy):
 		move(grid_pos + forward)
+
+func move(target_pos : Vector2i):
+	if !Rect2i(Vector2i.ZERO, Global.grid_size).has_point(target_pos):
+		print("OOB Move Occurred")
+		return
+	
+	play_move_animation(grid_pos, target_pos)
+	Global.grid[grid_pos.x][grid_pos.y] = null
+	Global.grid[target_pos.x][target_pos.y] = self
+	grid_pos = target_pos
 
 func change_attack():
 	match attack_form:
@@ -87,11 +99,28 @@ func change_attack():
 		AttackForm.SCISSORS:
 			attack_form = AttackForm.ROCK
 			
-func play_blocking_animation(name):
-	get_node("MainSprite").play(name)
-	
+func play_blocking_animation(anim_name):
 	Global.blocking_animations += 1
+	get_node("MainSprite").play(anim_name)
+	
 	get_node("MainSprite").animation_finished.connect(
 		func(): Global.blocking_animations -= 1,
 		CONNECT_ONE_SHOT
 	)
+
+const move_time = 0.25
+
+func play_move_animation(start_pos: Vector2i, target_pos: Vector2i):
+	Global.blocking_animations += 1
+	
+	var curr_pos = Vector2(start_pos)
+	var t = 0
+	while (t < move_time):
+		await get_tree().process_frame
+		t += get_process_delta_time()
+		var t_norm = t / move_time
+		var lerp_pos = curr_pos.lerp(target_pos, t_norm * t_norm * t_norm)
+		position = Vector2(Global.grid_origin) + Vector2(Global.grid_spacing) * lerp_pos
+	
+	position = Global.grid_origin + Global.grid_spacing * target_pos
+	Global.blocking_animations -= 1

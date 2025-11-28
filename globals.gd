@@ -161,12 +161,12 @@ func _process(_delta):
 					if elem && !elem.enemy:
 						if col > furthest_friendly_col:
 							furthest_friendly_col = col
-						elem._try_move(col < furthest_friendly_col)
+						elem._try_move_turn(col < furthest_friendly_col)
 			for x in range(grid_size.x): # Move enemy units
 				var col = grid[x]
 				for elem in col:
 					if elem && elem.enemy:
-						elem._try_move()
+						elem._try_move_turn()
 			
 			turn_phase = TurnPhase.BASE
 		
