@@ -23,7 +23,7 @@ func do_effect():
 		return
 	
 	var new_unit_instance = unit.duplicate()
-	Global.get_tree().root.add_child(new_unit_instance)
+	Global.game_ui.add_child(new_unit_instance)
 	new_unit_instance.init(div_pos)
 	
 	unit.health = unit_health / 2 + unit_health % 2

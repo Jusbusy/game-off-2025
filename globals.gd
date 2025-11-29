@@ -34,13 +34,16 @@ var game_ui:
 
 var card_button_container:
 	get:
-		var node =game_ui.get_node("CardContainer")
+		var node = game_ui.get_node("CardContainer")
 		if !node:
 			print("Attempted to access CardButtonContainer, but could not find it")
 		return node
 
-const grid_spacing = Vector2i(210, 70)
-const grid_origin = Vector2i(88, 88)
+const grid_spacing = Vector2i(72, 72)
+const grid_origin = Vector2i(46, 120)
+#var grid_origin: Vector2i:
+	#get:
+		#return Vector2i(game_ui.global_position) + grid_offset
 const grid_size = Vector2i(5, 5)
 
 var grid = []
@@ -92,7 +95,7 @@ func _ready():
 	player_ap = 3
 	
 	var unit_instance = load("res://Units/Friendlies/f_melee.tscn").instantiate()
-	Global.get_tree().root.add_child.call_deferred(unit_instance)
+	game_ui.add_child.call_deferred(unit_instance)
 	unit_instance.init(Vector2i(0, 2))
 	unit_instance.attack_form = rng.randi() % 3
 	
@@ -114,7 +117,7 @@ func _process(_delta):
 					
 				var unit_res = load("res://Units/Enemies/" + spawn[0] + ".tscn")
 				var unit_instance = unit_res.instantiate()
-				get_tree().root.add_child.call_deferred(unit_instance)
+				game_ui.add_child.call_deferred(unit_instance)
 				unit_instance.init(Vector2i(grid_size.x - 1, spawn_y))
 				unit_instance.attack_form = rng.randi() % 3
 			
@@ -262,8 +265,8 @@ func discard_card(hand_id):
 	
 
 func get_mouse_tile():
-	var mouse_pos = get_viewport().get_mouse_position() 
-	var mouse_tile = Vector2i((mouse_pos - Vector2(grid_origin)) / Vector2(grid_spacing) + Vector2(0.5, 0.5))
+	var mouse_pos = get_viewport().get_mouse_position()
+	var mouse_tile = Vector2i((mouse_pos - (Vector2(grid_origin) + game_ui.global_position)) / Vector2(grid_spacing) + Vector2(0.5, 0.5))
 	
 	if Rect2i(Vector2i.ZERO, grid_size).has_point(mouse_tile):
 		return mouse_tile
