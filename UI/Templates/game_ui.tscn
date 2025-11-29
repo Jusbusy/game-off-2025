@@ -1,0 +1,274 @@
+[gd_scene load_steps=26 format=3 uid="uid://c8pt55iv0fawq"]
+
+[ext_resource type="Texture2D" uid="uid://bc64lpdehlrb7" path="res://UI/Templates/16x16_UI_Border_Gray.png" id="1_sxk0u"]
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="2_mkme2"]
+[ext_resource type="Texture2D" uid="uid://yraew62rsbfw" path="res://UI/Templates/CancelButton.png" id="3_buhkg"]
+[ext_resource type="StyleBox" uid="uid://b7kruuy0jl20v" path="res://UI/Templates/ButtonBox.tres" id="3_jp3et"]
+[ext_resource type="Texture2D" uid="uid://cs1ku1xx6ml6f" path="res://UI/Templates/16x16_UI_Border_White_Inv.png" id="3_tjhx8"]
+[ext_resource type="StyleBox" uid="uid://cfx56r7o5514j" path="res://UI/Templates/ButtonBoxPressed.tres" id="4_5sj4c"]
+[ext_resource type="Texture2D" uid="uid://d4f4cp5yr2kdc" path="res://UI/Templates/CancelButton_Inv.png" id="4_ha6uy"]
+[ext_resource type="FontFile" uid="uid://c41ijf34q5yle" path="res://UI/W95font-Bold.otf" id="6_2oj50"]
+[ext_resource type="Texture2D" uid="uid://kknjwhx2kf7p" path="res://UI/Templates/160x176_TestTiles.png" id="7_mocx8"]
+[ext_resource type="Texture2D" uid="uid://dwwxjaqt0oiwp" path="res://UI/Templates/Back.png" id="7_tmeyk"]
+[ext_resource type="Texture2D" uid="uid://c1obcowyhwli5" path="res://UI/Templates/Boarder.png" id="8_kqx2n"]
+[ext_resource type="Texture2D" uid="uid://dg3u73b806ual" path="res://UI/Templates/Progress.png" id="9_fo18m"]
+[ext_resource type="Texture2D" uid="uid://u1weolnuy3pl" path="res://UI/Templates/BackBand.png" id="10_higfh"]
+[ext_resource type="Texture2D" uid="uid://b0mec2g4pmvpg" path="res://UI/Templates/BoarderBand.png" id="11_mocx8"]
+[ext_resource type="Texture2D" uid="uid://cjnjci0n07nxy" path="res://UI/Templates/ProgressBand.png" id="12_htj7p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkme2"]
+texture = ExtResource("1_sxk0u")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjhx8"]
+bg_color = Color(0.9607843, 0.31764707, 0.6039216, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oft38"]
+texture = ExtResource("3_buhkg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbwcm"]
+texture = ExtResource("4_ha6uy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05afy"]
+texture = ExtResource("3_buhkg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sj4c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sj4c"]
+texture = ExtResource("3_tjhx8")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_htj7p"]
+texture = ExtResource("7_mocx8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2oj50"]
+texture = ExtResource("3_tjhx8")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tjhx8"]
+texture = ExtResource("3_tjhx8")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 260.0
+scale = Vector2(2.25, 2.25)
+theme_override_styles/panel = SubResource("StyleBoxTexture_mkme2")
+
+[node name="Header" type="Panel" parent="Back"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 165.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjhx8")
+
+[node name="CancelBtn" type="Button" parent="Back/Header"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 15.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mkme2")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_oft38")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mbwcm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_05afy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5sj4c")
+
+[node name="HeaderText" type="Label" parent="Back/Header"]
+layout_mode = 0
+offset_left = -1.6666667
+offset_top = 1.8888888
+offset_right = 121.111115
+offset_bottom = 24.88889
+theme_override_fonts/font = ExtResource("6_2oj50")
+theme_override_font_sizes/font_size = 13
+text = " Conscious.net"
+
+[node name="GameScreen" type="Panel" parent="Back"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 22.0
+offset_right = 165.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5sj4c")
+
+[node name="TestTiles" type="Panel" parent="Back"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 23.0
+offset_right = 164.0
+offset_bottom = 199.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_htj7p")
+
+[node name="Panel" type="Panel" parent="Back"]
+layout_mode = 0
+offset_left = 3.1111112
+offset_top = 202.22221
+offset_right = 101.111115
+offset_bottom = 210.22221
+theme_override_styles/panel = SubResource("StyleBoxTexture_2oj50")
+
+[node name="HandArea" type="Panel" parent="Back"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 212.0
+offset_right = 101.0
+offset_bottom = 257.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tjhx8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Back/HandArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 0.8888855
+offset_right = -1.0
+offset_bottom = -1.1111145
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndTurnBtn" type="Button" parent="Back"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 103.11111
+offset_top = 239.11111
+offset_right = 164.88889
+offset_bottom = 257.1111
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_2oj50")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("3_jp3et")
+theme_override_styles/pressed = ExtResource("4_5sj4c")
+theme_override_styles/hover = ExtResource("3_jp3et")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5sj4c")
+text = "End Turn"
+
+[node name="ClientProgress" type="TextureProgressBar" parent="Back"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 202.0
+offset_right = 165.0
+offset_bottom = 235.11111
+max_value = 43.0
+step = 4.3
+value = 43.0
+texture_under = ExtResource("7_tmeyk")
+texture_over = ExtResource("8_kqx2n")
+texture_progress = ExtResource("9_fo18m")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="ServerProgress" type="TextureProgressBar" parent="Back"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 212.0
+offset_right = 165.0
+offset_bottom = 221.33333
+max_value = 43.0
+step = 4.3
+value = 43.0
+texture_under = ExtResource("7_tmeyk")
+texture_over = ExtResource("8_kqx2n")
+texture_progress = ExtResource("9_fo18m")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="BandProgress" type="TextureProgressBar" parent="Back"]
+layout_mode = 0
+offset_left = 130.22223
+offset_top = 225.33331
+offset_right = 164.88889
+offset_bottom = 233.33331
+max_value = 17.0
+step = 4.25
+value = 17.0
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("10_higfh")
+texture_over = ExtResource("11_mocx8")
+texture_progress = ExtResource("12_htj7p")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 457.0
+offset_right = 102.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mkme2")
+theme_override_font_sizes/font_size = 13
+text = "  B:\\Thoughts"
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 223.0
+offset_top = 508.0
+offset_right = 319.0
+offset_bottom = 531.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mkme2")
+theme_override_font_sizes/font_size = 13
+text = "   Bandwidth"
+
+[node name="Label3" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 226.0
+offset_top = 479.0
+offset_right = 322.0
+offset_bottom = 502.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mkme2")
+theme_override_font_sizes/font_size = 13
+text = "  Server"
+
+[node name="Label4" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 226.0
+offset_top = 456.0
+offset_right = 322.0
+offset_bottom = 479.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mkme2")
+theme_override_font_sizes/font_size = 13
+text = "  Client"
