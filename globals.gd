@@ -24,10 +24,17 @@ var ap_label:
 		if !node:
 			print("Attempted to access APLabel, but could not find it")
 		return node
-		
+
+var game_ui:
+	get:
+		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/GameUI")
+		if !node:
+			print("Attempted to access GameUI, but could not find it")
+		return node
+
 var card_button_container:
 	get:
-		var node = get_tree().root.get_node("Game/CanvasLayer/GameUI/Panel/Panel/CardButtonContainer")
+		var node =game_ui.get_node("CardContainer")
 		if !node:
 			print("Attempted to access CardButtonContainer, but could not find it")
 		return node
