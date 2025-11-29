@@ -60,14 +60,14 @@ var player_base_health: int:
 		return player_base_health
 	set(value):
 		player_base_health = value
-		player_base_health_label.text = "Player Base: %d" % value
+		game_ui.get_node("Back/ServerProgress").value = value
 
 var enemy_base_health: int:
 	get:
 		return enemy_base_health
 	set(value):
 		enemy_base_health = value
-		enemy_base_health_label.text = "Enemy Base: %d" % value
+		game_ui.get_node("Back/ClientProgress").value = value
 
 const turn_ap = 4
 var player_ap: int:
