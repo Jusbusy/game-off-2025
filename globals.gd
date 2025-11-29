@@ -4,27 +4,6 @@ var rng = RandomNumberGenerator.new()
 
 const card_button = preload("res://UI/CardButton.tscn")
 
-var player_base_health_label:
-	get:
-		var node = get_tree().root.get_node("Game/PlayerBaseHealthLabel")
-		if !node:
-			print("Attempted to access PlayerBaseHealthLabel, but could not find it")
-		return node
-		
-var enemy_base_health_label:
-	get:
-		var node = get_tree().root.get_node("Game/EnemyBaseHealthLabel")
-		if !node:
-			print("Attempted to access EnemyBaseHealthLabel, but could not find it")
-		return node
-		
-var ap_label:
-	get:
-		var node = get_tree().root.get_node("Game/APLabel")
-		if !node:
-			print("Attempted to access APLabel, but could not find it")
-		return node
-
 var game_ui:
 	get:
 		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/GameUI")

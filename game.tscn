@@ -16,23 +16,3 @@ grow_vertical = 2
 color = Color(0.41981313, 0.41981313, 0.4198131, 1)
 
 [node name="Desktop" parent="CanvasLayer" instance=ExtResource("1_80nbo")]
-
-[node name="PlayerBaseHealthLabel" type="Label" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Player Base: "
-
-[node name="EnemyBaseHealthLabel" type="Label" parent="."]
-visible = false
-offset_top = 23.0
-offset_right = 102.0
-offset_bottom = 46.0
-text = "Enemy Base: "
-
-[node name="APLabel" type="Label" parent="."]
-visible = false
-offset_top = 46.0
-offset_right = 40.0
-offset_bottom = 69.0
-text = "AP: "
