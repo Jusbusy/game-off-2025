@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk6d57abqt8vm"]
+
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_lvpmu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io8d4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67671"]
+bg_color = Color(1, 0.65088046, 0.73713225, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg33p"]
+bg_color = Color(1, 0.77254903, 0.8235294, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkqwo"]
+
+[node name="Email" type="Button"]
+texture_filter = 1
+custom_minimum_size = Vector2(354, 16)
+offset_right = 355.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_lvpmu")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_io8d4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_67671")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lg33p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hkqwo")
+
+[node name="Sender" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_lvpmu")
+theme_override_font_sizes/font_size = 13
+text = "Sender"
+
+[node name="Subject" type="Label" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 1.0
+offset_right = 352.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_lvpmu")
+theme_override_font_sizes/font_size = 13
+text = "Insert subject text"

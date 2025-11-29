@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://jw8k7mo7i83q"
-path="res://.godot/imported/W95FA.otf-940d1f7b7d0e4ab92fbbd158118ae45e.fontdata"
+uid="uid://c41ijf34q5yle"
+path="res://.godot/imported/W95font-Bold.otf-2e7b828a1f047b9267e64ea54f41665d.fontdata"
 
 [deps]
 
-source_file="res://UI/W95FA.otf"
-dest_files=["res://.godot/imported/W95FA.otf-940d1f7b7d0e4ab92fbbd158118ae45e.fontdata"]
+source_file="res://UI/W95font-Bold.otf"
+dest_files=["res://.godot/imported/W95font-Bold.otf-2e7b828a1f047b9267e64ea54f41665d.fontdata"]
 
 [params]
 
@@ -34,8 +34,7 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0),
-&"variation_embolden": 0.0
+"size": Vector2i(16, 0)
 }]
 language_support={}
 script_support={}

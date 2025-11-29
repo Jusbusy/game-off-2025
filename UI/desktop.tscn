@@ -1,9 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dosxtqqkhvkeu"]
+[gd_scene load_steps=17 format=3 uid="uid://dosxtqqkhvkeu"]
 
+[ext_resource type="Texture2D" uid="uid://rkg7ry1y1s0g" path="res://UI/Templates/Wallpaper.png" id="1_6no7a"]
 [ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_nh4s2"]
+[ext_resource type="Texture2D" uid="uid://bc64lpdehlrb7" path="res://UI/Templates/16x16_UI_Border_Gray.png" id="2_6no7a"]
+[ext_resource type="FontFile" uid="uid://c41ijf34q5yle" path="res://UI/W95font-Bold.otf" id="3_dyita"]
+[ext_resource type="Texture2D" uid="uid://dmy5lntt440ma" path="res://UI/Templates/16x16_UI_Border_Gray_Inv.png" id="3_nlgv6"]
+[ext_resource type="StyleBox" uid="uid://b7kruuy0jl20v" path="res://UI/Templates/ButtonBox.tres" id="4_nlgv6"]
+[ext_resource type="StyleBox" uid="uid://cfx56r7o5514j" path="res://UI/Templates/ButtonBoxPressed.tres" id="5_vlhxr"]
+[ext_resource type="PackedScene" uid="uid://c30blqugm1uj7" path="res://UI/DesktopButton.tscn" id="8_4csw5"]
+[ext_resource type="Texture2D" uid="uid://cbf7f8oyr7bvv" path="res://UI/Icons/32x32_Game_Shortcut.png" id="9_b7xnl"]
+[ext_resource type="PackedScene" uid="uid://dbcf3wykk7s2o" path="res://UI/Templates/storage.tscn" id="10_b7xnl"]
+[ext_resource type="PackedScene" uid="uid://5ym71wtj5mmn" path="res://UI/Templates/email_ui.tscn" id="11_a222k"]
+[ext_resource type="PackedScene" uid="uid://c8pt55iv0fawq" path="res://UI/Templates/game_area_ui.tscn" id="12_s1ged"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6no7a"]
-bg_color = Color(0.8431839, 0.8431839, 0.84318376, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1dpw"]
+texture = ExtResource("1_6no7a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g00sm"]
+texture = ExtResource("2_6no7a")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vlhxr"]
+texture = ExtResource("3_nlgv6")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfrka"]
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -13,38 +40,139 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="WallPaper" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8662212, 0.5463828, 0.7908754, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_r1dpw")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TaskBar" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -69.0
+offset_left = -2.0
+offset_top = -67.0
+offset_right = 5.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_6no7a")
+theme_override_styles/panel = SubResource("StyleBoxTexture_g00sm")
 
-[node name="Button" type="Button" parent="Panel"]
-texture_filter = 1
+[node name="Clock" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1015.0
+offset_top = -56.0
+offset_right = -12.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vlhxr")
+
+[node name="TimeLabel" type="Label" parent="Clock"]
 layout_mode = 0
-offset_right = 132.0
-offset_bottom = 62.0
+offset_top = 1.0
+offset_right = 124.0
+offset_bottom = 46.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_nh4s2")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 26
+text = "1:37 AM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartBtn" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -57.0
+offset_right = 164.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dyita")
+theme_override_font_sizes/font_size = 39
+theme_override_styles/normal = ExtResource("4_nlgv6")
+theme_override_styles/pressed = ExtResource("5_vlhxr")
+theme_override_styles/hover = ExtResource("4_nlgv6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kfrka")
 text = "Start"
 
-[node name="Window" type="Window" parent="."]
-oversampling_override = 1.0
-initial_position = 1
-size = Vector2i(755, 435)
-visible = false
+[node name="Shortcut" parent="." instance=ExtResource("8_4csw5")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 98.0
+icon = ExtResource("9_b7xnl")
+
+[node name="Name" parent="Shortcut" index="0"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -3
+text = "Conscious.
+net"
+
+[node name="Shortcut2" parent="." instance=ExtResource("8_4csw5")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 74.0
+offset_bottom = 208.0
+
+[node name="Name" parent="Shortcut2" index="0"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -3
+text = "Storage"
+
+[node name="StorageUI" parent="." instance=ExtResource("10_b7xnl")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -380.0
+offset_top = 3.0
+offset_right = -380.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="EmailUI" parent="." instance=ExtResource("11_a222k")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 3.0
+offset_right = 144.0
+offset_bottom = 3.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GameUI" parent="." instance=ExtResource("12_s1ged")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 3.0
+offset_right = 144.0
+offset_bottom = 3.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[editable path="Shortcut"]
+[editable path="Shortcut2"]
