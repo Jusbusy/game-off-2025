@@ -136,9 +136,7 @@ func _process(_delta):
 					selected_card = -1
 				
 				if !card.update():
-					hand.remove_at(selected_card)
-					card_button_container.get_child(selected_card).queue_free()
-					selected_card = -1
+					discard_card(selected_card)
 				
 				return
 			
@@ -233,7 +231,22 @@ func draw_cards():
 		card_button_container.add_child.call_deferred(card_button_instance)
 		card_button_instance.icon = deck[drawn_card].icon
 		card_button_instance.get_node("NameLabel").text = deck[drawn_card].name
-		card_button_instance.pressed.connect(func(): selected_card = card_button_instance.get_index())
+		card_button_instance.gui_input.connect(
+			func(event): 
+				if event is InputEventMouseButton and event.pressed:
+					match event.button_index:
+						MOUSE_BUTTON_LEFT:
+							selected_card = card_button_instance.get_index()
+						MOUSE_BUTTON_RIGHT:
+							discard_card(card_button_instance.get_index())
+				
+		)
+		
+func discard_card(hand_id):
+	hand.remove_at(hand_id)
+	card_button_container.get_child(hand_id).queue_free()
+	selected_card = -1
+	
 
 func get_mouse_tile():
 	var mouse_pos = get_viewport().get_mouse_position() 

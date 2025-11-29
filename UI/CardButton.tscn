@@ -13,6 +13,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(128, 160)
 theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+button_mask = 3
 icon = ExtResource("1_axw4u")
 icon_alignment = 1
 expand_icon = true
