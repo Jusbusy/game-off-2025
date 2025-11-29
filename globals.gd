@@ -31,6 +31,7 @@ enum TurnPhase { SPAWN, CARD, BATTLE, MOVE, BASE }
 var turn_phase
 var blocking_animations = 0
 var turn_count = 0
+var turn_ended = false
 
 var spawn_freqs = [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
 
@@ -67,6 +68,12 @@ var hand = []
 var selected_card = -1
 
 func _ready():
+	game_ui.get_node("Back/EndTurnBtn").pressed.connect(
+		func(): 
+			if turn_phase == TurnPhase.CARD:
+				turn_ended = true
+	)
+	
 	for i in range(grid_size.x):
 		grid.append([])
 		grid[i].resize(grid_size.y)
@@ -105,7 +112,7 @@ func _process(_delta):
 			turn_phase = TurnPhase.CARD
 		
 		TurnPhase.CARD: # Handle player cards
-			if !Input.is_action_just_pressed("end_turn"):
+			if !Input.is_action_just_pressed("end_turn") && !turn_ended:
 				if selected_card == -1:
 					if Input.is_action_just_pressed("select_card_1") && hand.size() >= 1:
 						selected_card = 0
@@ -209,10 +216,6 @@ func choose_enemy_spawn_pos():
 	# Randomly choose spawn tile
 	var spawns = priority_spawns if priority_spawns.size() > 0 else potential_spawns
 	return spawns.pick_random()
-
-var turn_ended = false
-func process_turn():
-	turn_ended = true
 
 func draw_cards():
 	while(hand.size() < hand_size && hand.size() != deck.size()):
