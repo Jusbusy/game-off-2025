@@ -77,7 +77,7 @@ func _try_move_turn(allow_auto_move = true):
 	if health <= 0:
 		return
 	var elem = get_local(forward)
-	if (!elem && allow_auto_move) || (elem && elem.health == 0 && enemy != elem.enemy):
+	if (!elem && allow_auto_move) || (elem && elem.health <= 0 && enemy != elem.enemy):
 		move(grid_pos + forward)
 
 func move(target_pos : Vector2i):
