@@ -69,13 +69,14 @@ var enemy_base_health: int:
 		enemy_base_health = value
 		enemy_base_health_label.text = "Enemy Base: %d" % value
 
-const turn_ap = 3
+const turn_ap = 4
 var player_ap: int:
 	get:
 		return player_ap
 	set(value):
 		player_ap = value
-		ap_label.text = "AP: %d" % value
+		game_ui.get_node("Back/BandProgress").value = value
+		#ap_label.text = "AP: %d" % value
 
 var death_queue = []
 
@@ -92,7 +93,7 @@ func _ready():
 		grid[i].resize(grid_size.y)
 	player_base_health = 10
 	enemy_base_health = 10
-	player_ap = 3
+	player_ap = turn_ap
 	
 	var unit_instance = load("res://Units/Friendlies/f_melee.tscn").instantiate()
 	game_ui.add_child.call_deferred(unit_instance)
