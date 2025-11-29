@@ -236,7 +236,7 @@ func draw_cards():
 		var card_button_instance = card_button.instantiate()
 		card_button_container.add_child.call_deferred(card_button_instance)
 		card_button_instance.icon = deck[drawn_card].icon
-		card_button_instance.get_node("NameLabel").text = deck[drawn_card].name
+		card_button_instance.get_node("CardName").text = deck[drawn_card].name
 		card_button_instance.gui_input.connect(
 			func(event): 
 				if event is InputEventMouseButton and event.pressed:
