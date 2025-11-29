@@ -83,6 +83,12 @@ func _ready():
 	player_base_health = 10
 	enemy_base_health = 10
 	player_ap = 3
+	
+	var unit_instance = load("res://Units/Friendlies/f_melee.tscn").instantiate()
+	Global.get_tree().root.add_child.call_deferred(unit_instance)
+	unit_instance.init(Vector2i(0, 2))
+	unit_instance.attack_form = rng.randi() % 3
+	
 	turn_phase = TurnPhase.SPAWN
 
 func _process(_delta):

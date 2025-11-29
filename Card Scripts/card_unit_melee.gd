@@ -18,3 +18,5 @@ func do_effect():
 	var unit_instance = load("res://Units/Friendlies/f_melee.tscn").instantiate()
 	Global.get_tree().root.add_child(unit_instance)
 	unit_instance.init(spawn_pos)
+	
+	unit_instance.attack_form = Global.rng.randi() % 3
