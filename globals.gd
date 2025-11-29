@@ -59,7 +59,6 @@ var enemy_base_health: int:
 		enemy_base_health = value
 		enemy_base_health_label.text = "Enemy Base: %d" % value
 
-const turn_ap = 3
 var player_ap: int:
 	get:
 		return player_ap
@@ -82,7 +81,6 @@ func _ready():
 		grid[i].resize(grid_size.y)
 	player_base_health = 10
 	enemy_base_health = 10
-	player_ap = 3
 	
 	var unit_instance = load("res://Units/Friendlies/f_melee.tscn").instantiate()
 	Global.get_tree().root.add_child.call_deferred(unit_instance)
