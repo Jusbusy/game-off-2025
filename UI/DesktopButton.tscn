@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cihnt244oywvg"]
+[gd_scene load_steps=7 format=3 uid="uid://c30blqugm1uj7"]
 
-[ext_resource type="Texture2D" uid="uid://crwwmge8ygqwc" path="res://UI/Icons/Card_Divide.png" id="1_axw4u"]
-[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="2_bgnkh"]
+[ext_resource type="Texture2D" uid="uid://dd2etwbmgsrun" path="res://UI/Icons/32x32_Storage.png" id="1_o5gtt"]
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="2_307le"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfjql"]
 content_margin_left = 2.0
@@ -22,10 +22,11 @@ content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0.5803922)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpfy0"]
 
-[node name="Card" type="Button"]
+[node name="Shortcut" type="Button"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 88)
 offset_right = 64.0
@@ -34,12 +35,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
-icon = ExtResource("1_axw4u")
+icon = ExtResource("1_o5gtt")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="CardName" type="Label" parent="."]
+[node name="Name" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -50,23 +51,7 @@ offset_right = 37.0
 offset_bottom = 78.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_bgnkh")
+theme_override_fonts/font = ExtResource("2_307le")
 theme_override_font_sizes/font_size = 13
 text = "Card Name"
-horizontal_alignment = 1
-
-[node name="APLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -35.0
-offset_top = 72.61499
-offset_right = 37.0
-offset_bottom = 88.61499
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_bgnkh")
-theme_override_font_sizes/font_size = 13
-text = "1 Kb"
 horizontal_alignment = 1

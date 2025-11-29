@@ -68,6 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Back" type="Panel" parent="."]
 texture_filter = 1
@@ -131,7 +132,7 @@ offset_right = 164.0
 offset_bottom = 199.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_htj7p")
 
-[node name="Panel" type="Panel" parent="Back"]
+[node name="DirectoryPanel" type="Panel" parent="Back"]
 layout_mode = 0
 offset_left = 3.1111112
 offset_top = 202.22221
@@ -147,18 +148,6 @@ offset_top = 212.0
 offset_right = 101.0
 offset_bottom = 257.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_tjhx8")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Back/HandArea"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 0.8888855
-offset_right = -1.0
-offset_bottom = -1.1111145
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="EndTurnBtn" type="Button" parent="Back"]
 texture_filter = 1
@@ -225,7 +214,7 @@ texture_over = ExtResource("11_mocx8")
 texture_progress = ExtResource("12_htj7p")
 texture_progress_offset = Vector2(1, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="DirectoryLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
 offset_left = 6.0
@@ -237,7 +226,7 @@ theme_override_fonts/font = ExtResource("2_mkme2")
 theme_override_font_sizes/font_size = 13
 text = "  B:\\Thoughts"
 
-[node name="Label2" type="Label" parent="."]
+[node name="BandwithLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
 offset_left = 223.0
@@ -249,7 +238,7 @@ theme_override_fonts/font = ExtResource("2_mkme2")
 theme_override_font_sizes/font_size = 13
 text = "   Bandwidth"
 
-[node name="Label3" type="Label" parent="."]
+[node name="ServerLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
 offset_left = 226.0
@@ -261,7 +250,7 @@ theme_override_fonts/font = ExtResource("2_mkme2")
 theme_override_font_sizes/font_size = 13
 text = "  Server"
 
-[node name="Label4" type="Label" parent="."]
+[node name="ClientLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
 offset_left = 226.0
@@ -272,3 +261,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_mkme2")
 theme_override_font_sizes/font_size = 13
 text = "  Client"
+
+[node name="CardContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 483.0
+offset_right = 222.0
+offset_bottom = 572.0
+theme_override_constants/separation = 9

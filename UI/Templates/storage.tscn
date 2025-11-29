@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbcf3wykk7s2o"]
+
+[ext_resource type="Texture2D" uid="uid://bc64lpdehlrb7" path="res://UI/Templates/16x16_UI_Border_Gray.png" id="1_rxehv"]
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="2_0f7ff"]
+[ext_resource type="Texture2D" uid="uid://yraew62rsbfw" path="res://UI/Templates/CancelButton.png" id="3_fm5y0"]
+[ext_resource type="Texture2D" uid="uid://d4f4cp5yr2kdc" path="res://UI/Templates/CancelButton_Inv.png" id="4_lqfhf"]
+[ext_resource type="FontFile" uid="uid://c41ijf34q5yle" path="res://UI/W95font-Bold.otf" id="5_jdesn"]
+[ext_resource type="Texture2D" uid="uid://cs1ku1xx6ml6f" path="res://UI/Templates/16x16_UI_Border_White_Inv.png" id="6_k5wai"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkme2"]
+texture = ExtResource("1_rxehv")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjhx8"]
+bg_color = Color(0.9607843, 0.31764707, 0.6039216, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oft38"]
+texture = ExtResource("3_fm5y0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbwcm"]
+texture = ExtResource("4_lqfhf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05afy"]
+texture = ExtResource("3_fm5y0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sj4c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sj4c"]
+texture = ExtResource("6_k5wai")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[node name="StorageUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Back" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 260.0
+scale = Vector2(2.25, 2.25)
+theme_override_styles/panel = SubResource("StyleBoxTexture_mkme2")
+
+[node name="Header" type="Panel" parent="Back"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 165.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjhx8")
+
+[node name="CancelBtn" type="Button" parent="Back/Header"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 15.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0f7ff")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_oft38")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mbwcm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_05afy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5sj4c")
+
+[node name="HeaderText" type="Label" parent="Back/Header"]
+layout_mode = 0
+offset_left = -1.6666667
+offset_top = 1.8888888
+offset_right = 121.111115
+offset_bottom = 24.88889
+theme_override_fonts/font = ExtResource("5_jdesn")
+theme_override_font_sizes/font_size = 13
+text = " Storage"
+
+[node name="GameScreen" type="Panel" parent="Back"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 38.22222
+offset_right = 165.0
+offset_bottom = 256.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5sj4c")
+
+[node name="Directory Panel" type="Panel" parent="Back"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 22.666666
+offset_right = 80.88889
+offset_bottom = 34.22222
+theme_override_styles/panel = SubResource("StyleBoxTexture_5sj4c")
+
+[node name="DirectoryLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 58.0
+offset_right = 78.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0f7ff")
+theme_override_font_sizes/font_size = 13
+text = "My Thoughts"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 88.0
+offset_right = 368.0
+offset_bottom = 573.0
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 5
