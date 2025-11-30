@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://3bwf2odxeuvb"]
+
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_f42dw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_io8d4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67671"]
+bg_color = Color(0.32544068, 0.32544097, 0.32544082, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io8d4"]
+bg_color = Color(0.5014065, 0.50140655, 0.50140643, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f42dw"]
+bg_color = Color(0.24477634, 0.24477643, 0.24477628, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg33p"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(0, 18)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_io8d4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_67671")
+theme_override_styles/hover = SubResource("StyleBoxFlat_io8d4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_f42dw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lg33p")
+
+[node name="FromLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 53.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_f42dw")
+text = "Da Boss"
+
+[node name="SubjectLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 3.0
+offset_right = 175.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_f42dw")
+text = "Coffee Run"

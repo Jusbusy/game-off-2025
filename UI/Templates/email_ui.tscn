@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://5ym71wtj5mmn"]
+[gd_scene load_steps=18 format=3 uid="uid://5ym71wtj5mmn"]
 
+[ext_resource type="Script" uid="uid://no6d8hj24ibi" path="res://UI/Templates/email_system.gd" id="1_67671"]
 [ext_resource type="Texture2D" uid="uid://bc64lpdehlrb7" path="res://UI/Templates/16x16_UI_Border_Gray.png" id="1_o3f6m"]
 [ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="2_ea5su"]
 [ext_resource type="Texture2D" uid="uid://yraew62rsbfw" path="res://UI/Templates/CancelButton.png" id="3_o2eay"]
@@ -7,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c41ijf34q5yle" path="res://UI/W95font-Bold.otf" id="5_g32pu"]
 [ext_resource type="Texture2D" uid="uid://cs1ku1xx6ml6f" path="res://UI/Templates/16x16_UI_Border_White_Inv.png" id="6_ienaq"]
 [ext_resource type="Texture2D" uid="uid://dmy5lntt440ma" path="res://UI/Templates/16x16_UI_Border_Gray_Inv.png" id="7_io8d4"]
+[ext_resource type="PackedScene" uid="uid://bjnua5yyt7wwb" path="res://UI/email_content.tscn" id="9_lg33p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkme2"]
 texture = ExtResource("1_o3f6m")
@@ -51,6 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_67671")
 
 [node name="Back" type="Panel" parent="."]
 texture_filter = 1
@@ -221,3 +224,6 @@ offset_top = 128.0
 offset_right = 370.0
 offset_bottom = 208.0
 theme_override_constants/separation = 1
+
+[node name="EmailContent" parent="." instance=ExtResource("9_lg33p")]
+layout_mode = 0

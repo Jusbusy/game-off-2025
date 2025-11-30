@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjnua5yyt7wwb"]
+
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_tkib7"]
+
+[node name="Email" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 302.0
+offset_right = 367.0
+offset_bottom = 335.66666
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_tkib7")
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 2
+
+[node name="EmailContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 480.0
+offset_right = 290.0
+offset_bottom = 568.0
+alignment = 1

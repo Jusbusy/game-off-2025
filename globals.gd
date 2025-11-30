@@ -4,6 +4,13 @@ var rng = RandomNumberGenerator.new()
 
 const card_button = preload("res://UI/CardButton.tscn")
 
+var email_ui:
+	get:
+		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/EmailUI")
+		if !node:
+			print("Attempted to access EmailUI, but could not find it")
+		return node
+
 var game_ui:
 	get:
 		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/GameUI")
@@ -34,13 +41,29 @@ const grid_size = Vector2i(5, 5)
 
 var grid = []
 
+var levels = [
+	{
+		"Icon" : "res://UI/Icons/Card_Divide.png",
+		"Name" : "Level1.exe",
+		"Freqs" : [["e_melee", 2]]
+	},
+	{
+		"Icon" : "res://UI/Icons/Card_Divide.png",
+		"Name" : "Level2.exe",
+		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
+	}
+]
+var level_id = 0
+var in_level = false
+var level_over = false
+
+#var spawn_freqs = [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
+
 enum TurnPhase { SPAWN, CARD, BATTLE, MOVE, BASE }
 var turn_phase
 var blocking_animations = 0
 var turn_count = 0
 var turn_ended = false
-
-var spawn_freqs = [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
 
 var player_base_health: int:
 	get:
@@ -85,6 +108,9 @@ func _ready():
 	
 	game_ui.get_node("Back/EndTurnBtn").pressed.connect(
 		func(): 
+			if level_over:
+				end_level()
+				return
 			if turn_phase == TurnPhase.CARD:
 				turn_ended = true
 	)
@@ -92,24 +118,28 @@ func _ready():
 	for i in range(grid_size.x):
 		grid.append([])
 		grid[i].resize(grid_size.y)
-	player_base_health = 10
-	enemy_base_health = 10
-	player_ap = turn_ap
-	
-	var unit_instance = load("res://Units/Friendlies/f_melee.tscn").instantiate()
-	game_ui.add_child.call_deferred(unit_instance)
-	unit_instance.init(Vector2i(0, 2))
-	unit_instance.attack_form = rng.randi() % 3
-	
-	turn_phase = TurnPhase.SPAWN
 
 func _process(_delta):
-	if blocking_animations != 0:
+	if Input.is_action_just_pressed("debug"):
+		level_over = true
+	
+	if blocking_animations != 0 || !in_level:
+		return
+	
+	if level_over:
+		if Input.is_action_just_pressed("end_turn"):
+			end_level()
 		return
 	
 	match(turn_phase):
 		TurnPhase.SPAWN: # Handle unit spawns
-			for spawn in spawn_freqs:
+			if turn_count == 0:
+				var unit_instance = load("res://Units/Friendlies/f_melee.tscn").instantiate()
+				game_ui.add_child.call_deferred(unit_instance)
+				unit_instance.init(Vector2i(0, 2))
+				unit_instance.attack_form = rng.randi() % 3
+			
+			for spawn in levels[level_id]["Freqs"]:
 				if turn_count % spawn[1] != 0:
 					continue
 					
@@ -196,6 +226,8 @@ func _process(_delta):
 					elem.play_blocking_animation("attack", 
 						func():
 							enemy_base_health -= elem.health
+							if enemy_base_health <= 0:
+								level_over = true
 							elem.queue_free()
 					)
 			for elem in grid[0]:
@@ -298,3 +330,26 @@ func use_ap(amt: int):
 		return false
 	player_ap -= amt
 	return true
+	
+func start_level(id):
+	level_id = id
+	turn_phase = TurnPhase.SPAWN
+	in_level = true
+	level_over = false
+	turn_count = 0
+	player_base_health = 10
+	enemy_base_health = 10
+	player_ap = turn_ap
+	game_ui.visible = true
+
+func end_level():
+	for col in grid:
+		for elem in col:
+			if elem:
+				elem.queue_free() 
+	hand = []
+	for button in card_button_container.get_children():
+		button.queue_free()
+	shuffle_draw()
+	email_ui.post_next_email()
+	game_ui.visible = false
