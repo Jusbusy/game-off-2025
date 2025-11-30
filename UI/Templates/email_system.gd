@@ -30,6 +30,14 @@ var emails = [
 	},
 	{
 		"From" : "Boss",
+		"Subject" : "Add a card or something IDK",
+		"Content" : 
+		r"""Dear Employee,
+		Pick a card. Any card!""",
+		"Type" : "AddCard",
+	},
+	{
+		"From" : "Boss",
 		"Subject" : "Level2",
 		"Content" : 
 		r"""CoolTestMessage""",
@@ -84,7 +92,12 @@ func post_next_email():
 	
 	email_id += 1
 
+var last_open_email = -1
+
 func open_email(id):
+	if last_open_email == id:
+		return
+	last_open_email = id
 	var email = emails[id]
 	
 	get_node("InfoInput").text = email["From"] + "\nYou\n\n" + email["Subject"]
@@ -96,10 +109,30 @@ func open_email(id):
 	if !email.has("Type"):
 		return
 	match email["Type"]:
+		
 		"Level":
 			var level = Global.levels[email["LevelID"]]
 			var button_instance = Global.card_button.instantiate()
 			email_container.add_child(button_instance)
 			button_instance.icon = load(level["Icon"])
 			button_instance.get_node("CardName").text = level["Name"]
-			button_instance.pressed.connect(Global.start_level.bind(email["LevelID"]))
+			button_instance.pressed.connect(
+				func():
+					button_instance.disabled = true
+					Global.start_level(email["LevelID"])
+			)
+		
+		"AddCard":
+			for i in range(3):
+				var card = Global.gen_card()
+				var button_instance = Global.card_button.instantiate()
+				email_container.add_child(button_instance)
+				button_instance.icon = card.icon
+				button_instance.get_node("CardName").text = card.name
+				button_instance.pressed.connect(
+					func():
+						Global.add_card_to_deck(card)
+						for button in email_container.get_children():
+							button.disabled = true
+						post_next_email()
+				)

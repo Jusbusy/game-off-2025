@@ -390,3 +390,21 @@ func end_level():
 	shuffle_draw()
 	email_ui.post_next_email()
 	game_ui.visible = false
+
+var card_list = [
+	[CardMove, 3],
+	[CardUnitMelee, 3],
+	[CardHeal, 3],
+	[CardDivide, 2]
+]
+
+func gen_card():
+	var total_weight = 0
+	for item in card_list:
+		total_weight += item[1]
+	var r = rng.randi() % total_weight
+	for item in card_list:
+		r -= item[1]
+		if r < 0:
+			return item[0].new()
+	return null
