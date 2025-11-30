@@ -18,7 +18,6 @@ color = Color(0.41981313, 0.41981313, 0.4198131, 1)
 [node name="Desktop" parent="CanvasLayer" instance=ExtResource("1_80nbo")]
 
 [node name="Highlight" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -30,4 +29,4 @@ offset_left = -33.0
 offset_top = -28.0
 offset_right = 31.0
 offset_bottom = 36.0
-color = Color(0.5686275, 0.45882353, 0.9882353, 0.47058824)
+color = Color(0.9393936, 0.24154592, 0.61347264, 0.47058824)

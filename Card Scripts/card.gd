@@ -33,17 +33,17 @@ const SLCT_ENEMY_SPAWN = 1 << 4
 var _select_id = 0
 var _curr_selections = []
 func update():
+	if Input.is_action_just_pressed("select"):
+		var select = Global.get_mouse_tile()
+		if select != null && check_selection(select):
+			_curr_selections.append(select)
+			_select_id += 1
+	
 	if _select_id >= selection_rules.size():
 		Global.player_ap -= cost
 		do_effect()
 		reset_selection()
 		return false
-	
-	if Input.is_action_just_pressed("select"):
-		var select = Global.get_mouse_tile()
-		if select != null && check_selection(_select_id, select):
-			_curr_selections.append(select)
-			_select_id += 1
 	
 	return true
 
@@ -51,8 +51,10 @@ func reset_selection():
 	_select_id = 0
 	_curr_selections = []
 
-func check_selection(id: int, pos: Vector2i):
-	var rules = selection_rules[id]
+func check_selection(pos: Vector2i):
+	if _select_id >= selection_rules.size():
+		return false
+	var rules = selection_rules[_select_id]
 	
 	# Check OOB
 	if pos.x < 0 || pos.y < 0 || pos.x >= Global.grid_size.x || pos.y >= Global.grid_size.y:
@@ -81,7 +83,7 @@ func check_selection(id: int, pos: Vector2i):
 	
 	# Check if in valid adjacent tile
 	if rules.has("adjacents"):
-		var prev_pos = _curr_selections[id - 1]
+		var prev_pos = _curr_selections[_select_id - 1]
 		for adj in rules["adjacents"]:
 			if prev_pos + adj == pos:
 				return true

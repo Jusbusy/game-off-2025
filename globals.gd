@@ -38,6 +38,10 @@ var highlight:
 		if !node:
 			print("Attempted to access HighlightRect, but could not find it")
 		return node
+const default_highlight_color = Color(0x9175fc78)
+const card_select_highlight_color = Color(0x00a89078)
+const card_invalid_highlight_color = Color(0xf03e9c78)
+
 
 const grid_spacing = Vector2i(72, 72)
 const grid_origin = Vector2i(46, 120)
@@ -178,6 +182,7 @@ func _process(_delta):
 			var mouse_tile = get_mouse_tile()
 			if mouse_tile != null:
 				highlight.visible = true
+				highlight.get_node("ColorRect").color = default_highlight_color
 				var highlight_pos = Vector2(mouse_tile)
 				highlight_pos *= Vector2(grid_spacing)
 				highlight_pos += Vector2(grid_origin) + game_ui.global_position
@@ -202,11 +207,16 @@ func _process(_delta):
 						return
 				
 				var card = deck[hand[selected_card]]
-				if card.cost > player_ap:
-					return
+				if mouse_tile != null && card.check_selection(mouse_tile):
+					highlight.get_node("ColorRect").color = card_select_highlight_color
+				else:
+					highlight.get_node("ColorRect").color = card_invalid_highlight_color
 				
 				if Input.is_action_just_pressed("cancel"):
 					selected_card = -1
+				
+				if card.cost > player_ap:
+					return
 				
 				if !card.update():
 					discard_card(selected_card)
