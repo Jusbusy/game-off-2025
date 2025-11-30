@@ -11,6 +11,13 @@ var game_ui:
 			print("Attempted to access GameUI, but could not find it")
 		return node
 
+var storage_container:
+	get:
+		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/StorageUI/ScrollContainer/GridContainer")
+		if !node:
+			print("Attempted to access StorageContainer, but could not find it")
+		return node
+
 var card_button_container:
 	get:
 		var node = game_ui.get_node("CardContainer")
@@ -62,12 +69,20 @@ var death_queue = []
 
 const hand_size = 3
 
-var deck = [CardUnitMelee.new(), CardHeal.new(), CardMove.new(), CardDivide.new()]
+var starter_deck = [
+	CardMove.new(), CardMove.new(),
+	CardUnitMelee.new(), CardUnitMelee.new(),
+	CardHeal.new(), CardHeal.new(), CardHeal.new(), CardHeal.new()
+]
+var deck = []
 var draw = []
 var hand = []
 var selected_card = -1
 
 func _ready():
+	for card in starter_deck:
+		call_deferred("add_card_to_deck", card)
+	
 	game_ui.get_node("Back/EndTurnBtn").pressed.connect(
 		func(): 
 			if turn_phase == TurnPhase.CARD:
@@ -220,10 +235,9 @@ func choose_enemy_spawn_pos():
 func draw_cards():
 	while(hand.size() < hand_size && hand.size() != deck.size()):
 		if draw.size() == 0:
-			draw = range(deck.size())
-			draw = draw.filter(func(x): return !hand.has(x))
-			draw.shuffle()
+			shuffle_draw()
 		var drawn_card = draw.pop_back()
+		storage_container.get_child(drawn_card).disabled = true
 		hand.append(drawn_card)
 		
 		var card_button_instance = card_button.instantiate()
@@ -245,7 +259,31 @@ func discard_card(hand_id):
 	hand.remove_at(hand_id)
 	card_button_container.get_child(hand_id).queue_free()
 	selected_card = -1
+
+func shuffle_draw():
+	draw = range(deck.size())
+	draw = draw.filter(func(x): return !hand.has(x))
+	draw.shuffle()
+	for i in range(deck.size()):
+		if !hand.has(i):
+			storage_container.get_child(i).disabled = false
+
+func add_card_to_deck(card: Card):
+	deck.append(card)
+	deck.sort_custom(func(a, b): return a.name < b.name)
 	
+	var card_button_instance = card_button.instantiate()
+	storage_container.add_child(card_button_instance)
+	
+	var card_buttons = storage_container.get_children()
+	for i in range(deck.size()):
+		card_buttons[i].icon = deck[i].icon
+		card_buttons[i].get_node("CardName").text = deck[i].name
+
+func remove_card_from_deck(card_id: int):
+	deck.remove_at(card_id)
+	storage_container.get_child(card_id).queue_free()
+	pass
 
 func get_mouse_tile():
 	var mouse_pos = get_viewport().get_mouse_position()
