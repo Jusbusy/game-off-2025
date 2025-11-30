@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bqu2qb36ixmcd"]
+
+[ext_resource type="Texture2D" uid="uid://bdw02n1f885cf" path="res://Sprites/Unit Sprites/1024x1024_LochNestea_SpriteSheet.png" id="1_7q54q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubuh6"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brnhp"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16kkl"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqcfj"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuivn"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1siu"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ixgm"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42f05"]
+atlas = ExtResource("1_7q54q")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubuh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brnhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16kkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqcfj")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuivn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1siu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ixgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42f05")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

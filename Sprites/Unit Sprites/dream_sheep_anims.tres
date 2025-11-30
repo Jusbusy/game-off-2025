@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bmex3x10fhite"]
+
+[ext_resource type="Texture2D" uid="uid://1epdsv8crshr" path="res://Sprites/Unit Sprites/1024x1024_DreamSheep_SpriteSheet.png" id="1_u81as"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p676m"]
+atlas = ExtResource("1_u81as")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt4a8"]
+atlas = ExtResource("1_u81as")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv0xx"]
+atlas = ExtResource("1_u81as")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2wmd"]
+atlas = ExtResource("1_u81as")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p676m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt4a8")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv0xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2wmd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]

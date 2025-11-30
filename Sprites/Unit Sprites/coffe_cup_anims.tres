@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://ct8akx3gdfad5"]
+
+[ext_resource type="Texture2D" uid="uid://cj7g0p7clo6iq" path="res://Sprites/Unit Sprites/1024x1024_CoffeeCup_SpriteSheet.png" id="1_nvibm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p762"]
+atlas = ExtResource("1_nvibm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpc8u"]
+atlas = ExtResource("1_nvibm")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iyjv"]
+atlas = ExtResource("1_nvibm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkjdo"]
+atlas = ExtResource("1_nvibm")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p762")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpc8u")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iyjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkjdo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
