@@ -32,6 +32,13 @@ var card_button_container:
 			print("Attempted to access CardButtonContainer, but could not find it")
 		return node
 
+var highlight:
+	get:
+		var node = get_tree().root.get_node("Game/Highlight")
+		if !node:
+			print("Attempted to access HighlightRect, but could not find it")
+		return node
+
 const grid_spacing = Vector2i(72, 72)
 const grid_origin = Vector2i(46, 120)
 #var grid_origin: Vector2i:
@@ -120,6 +127,8 @@ func _ready():
 		grid[i].resize(grid_size.y)
 
 func _process(_delta):
+	highlight.visible = false
+	
 	if Input.is_action_just_pressed("debug"):
 		level_over = true
 	
@@ -157,6 +166,14 @@ func _process(_delta):
 			turn_phase = TurnPhase.CARD
 		
 		TurnPhase.CARD: # Handle player cards
+			var mouse_tile = get_mouse_tile()
+			if mouse_tile != null:
+				highlight.visible = true
+				var highlight_pos = Vector2(mouse_tile)
+				highlight_pos *= Vector2(grid_spacing)
+				highlight_pos += Vector2(grid_origin) + game_ui.global_position
+				highlight.position = highlight_pos
+			
 			if !Input.is_action_just_pressed("end_turn") && !turn_ended:
 				if selected_card == -1:
 					if Input.is_action_just_pressed("select_card_1") && hand.size() >= 1:
@@ -319,9 +336,10 @@ func remove_card_from_deck(card_id: int):
 
 func get_mouse_tile():
 	var mouse_pos = get_viewport().get_mouse_position()
-	var mouse_tile = Vector2i((mouse_pos - (Vector2(grid_origin) + game_ui.global_position)) / Vector2(grid_spacing) + Vector2(0.5, 0.5))
+	var mouse_pos_norm = (mouse_pos - (Vector2(grid_origin) + game_ui.global_position)) / Vector2(grid_spacing) + Vector2(0.5, 0.5)
+	var mouse_tile = Vector2i(mouse_pos_norm)
 	
-	if Rect2i(Vector2i.ZERO, grid_size).has_point(mouse_tile):
+	if Rect2i(Vector2i.ZERO, grid_size).has_point(mouse_tile) && mouse_pos_norm.x >= 0 && mouse_pos_norm.y >= 0:
 		return mouse_tile
 	return null
 	
