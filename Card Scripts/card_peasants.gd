@@ -21,6 +21,6 @@ func do_effect():
 		var elem = Global.grid[unit_pos.x][y]
 		if !elem:
 			var new_unit_instance = new_unit.instantiate()
-			Global.get_tree().root.add_child(new_unit_instance)
+			Global.game_ui.add_child(new_unit_instance)
 			new_unit_instance.init(Vector2i(unit_pos.x, y))
 			new_unit_instance.attack_form = Global.rng.randi() % 3

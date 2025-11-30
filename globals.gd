@@ -106,7 +106,8 @@ const hand_size = 3
 var starter_deck = [
 	CardMove.new(), CardMove.new(),
 	CardUnitMelee.new(), CardUnitMelee.new(),
-	CardHeal.new(), CardHeal.new(), CardHeal.new(), CardHeal.new()
+	CardHeal.new(), CardHeal.new(), CardHeal.new(), CardHeal.new(),
+	CardPeasants.new()
 ]
 var deck = []
 var draw = []
