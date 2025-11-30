@@ -25,6 +25,7 @@ func do_effect():
 	var new_unit_instance = unit.duplicate()
 	Global.game_ui.add_child(new_unit_instance)
 	new_unit_instance.init(div_pos)
+	new_unit_instance.attack_form = unit.attack_form
 	
 	unit.health = unit_health / 2 + unit_health % 2
 	new_unit_instance.health = unit_health / 2
