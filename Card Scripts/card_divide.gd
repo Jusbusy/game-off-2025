@@ -19,13 +19,14 @@ func do_effect():
 	
 	var unit = Global.grid[unit_pos.x][unit_pos.y]
 	var unit_health = unit.health
-	if unit_health <= 1:
-		return
 	
 	var new_unit_instance = unit.duplicate()
 	Global.game_ui.add_child(new_unit_instance)
 	new_unit_instance.init(div_pos)
 	new_unit_instance.attack_form = unit.attack_form
 	
-	unit.health = unit_health / 2 + unit_health % 2
-	new_unit_instance.health = unit_health / 2
+	if unit_health > 1:
+		unit.health = unit_health / 2 + unit_health % 2
+		new_unit_instance.health = unit_health / 2
+	else:
+		new_unit_instance.health = 1
