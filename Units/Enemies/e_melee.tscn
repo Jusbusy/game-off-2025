@@ -43,7 +43,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="Unit" type="Node2D"]
@@ -54,7 +54,8 @@ enemy = true
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8hsi5")
-animation = &"attack"
+animation = &"idle"
+frame_progress = 0.18606228
 
 [node name="AttackIcon" type="Sprite2D" parent="."]
 texture_filter = 1

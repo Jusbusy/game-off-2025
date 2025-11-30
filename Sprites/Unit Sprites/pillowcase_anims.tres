@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://cyjehnj3f7acf"]
+
+[ext_resource type="Texture2D" uid="uid://by4vnbg31hiu4" path="res://Sprites/Unit Sprites/1024x1024_Pillowcase_SpriteSheet.png" id="1_uq8hu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk3we"]
+atlas = ExtResource("1_uq8hu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io2q2"]
+atlas = ExtResource("1_uq8hu")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vdus"]
+atlas = ExtResource("1_uq8hu")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56gxd"]
+atlas = ExtResource("1_uq8hu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a10u"]
+atlas = ExtResource("1_uq8hu")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk3we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io2q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vdus")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56gxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a10u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
