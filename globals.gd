@@ -107,7 +107,16 @@ var starter_deck = [
 var deck = []
 var draw = []
 var hand = []
-var selected_card = -1
+var selected_card: int = -1:
+	get:
+		return selected_card
+	set(value):
+		if selected_card != -1:
+			deck[hand[selected_card]].reset_selection()
+			card_button_container.get_child(selected_card).disabled = false
+		selected_card = value
+		if selected_card != -1:
+			card_button_container.get_child(selected_card).disabled = true
 
 func _ready():
 	for card in starter_deck:
@@ -197,7 +206,6 @@ func _process(_delta):
 					return
 				
 				if Input.is_action_just_pressed("cancel"):
-					card.reset_selection()
 					selected_card = -1
 				
 				if !card.update():
@@ -205,6 +213,7 @@ func _process(_delta):
 				
 				return
 			
+			selected_card = -1
 			turn_ended = false
 			turn_phase = TurnPhase.BATTLE
 			
@@ -305,9 +314,9 @@ func draw_cards():
 		)
 		
 func discard_card(hand_id):
+	selected_card = -1
 	hand.remove_at(hand_id)
 	card_button_container.get_child(hand_id).queue_free()
-	selected_card = -1
 
 func shuffle_draw():
 	draw = range(deck.size())
