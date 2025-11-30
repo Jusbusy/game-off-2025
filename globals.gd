@@ -313,6 +313,7 @@ func draw_cards():
 		card_button_container.add_child.call_deferred(card_button_instance)
 		card_button_instance.icon = deck[drawn_card].icon
 		card_button_instance.get_node("CardName").text = deck[drawn_card].name
+		card_button_instance.get_node("APLabel").text = "%d Kb" % deck[drawn_card].cost
 		card_button_instance.gui_input.connect(
 			func(event): 
 				if event is InputEventMouseButton and event.pressed:
@@ -348,6 +349,7 @@ func add_card_to_deck(card: Card):
 	for i in range(deck.size()):
 		card_buttons[i].icon = deck[i].icon
 		card_buttons[i].get_node("CardName").text = deck[i].name
+		card_buttons[i].get_node("APLabel").text = "%d Kb" % deck[i].cost
 
 func remove_card_from_deck(card_id: int):
 	deck.remove_at(card_id)

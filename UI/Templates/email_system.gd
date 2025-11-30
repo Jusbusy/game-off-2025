@@ -129,6 +129,7 @@ func open_email(id):
 				email_container.add_child(button_instance)
 				button_instance.icon = card.icon
 				button_instance.get_node("CardName").text = card.name
+				button_instance.get_node("APLabel").text = "%d Kb" % card.cost
 				button_instance.pressed.connect(
 					func():
 						Global.add_card_to_deck(card)
