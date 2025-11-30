@@ -237,6 +237,13 @@ func _process(_delta):
 			turn_phase = TurnPhase.MOVE
 		
 		TurnPhase.MOVE: # Handle unit movements
+			var moved_units = {}
+			for col in grid:
+				for elem in col:
+					if elem:
+						if elem._try_move_turn(true, false):
+							moved_units[elem] = true
+			
 			var furthest_friendly_col = 0
 			for x in range(grid_size.x): # Move player units
 				var col = grid_size.x - 1 - x
@@ -244,12 +251,13 @@ func _process(_delta):
 					if elem && !elem.enemy:
 						if col > furthest_friendly_col:
 							furthest_friendly_col = col
-						elem._try_move_turn(col < furthest_friendly_col)
+						if !moved_units.has(elem):
+							elem._try_move_turn(false, col < furthest_friendly_col)
 			for x in range(grid_size.x): # Move enemy units
 				var col = grid[x]
 				for elem in col:
-					if elem && elem.enemy:
-						elem._try_move_turn()
+					if elem && !moved_units.has(elem) && elem.enemy:
+						elem._try_move_turn(false)
 			
 			turn_phase = TurnPhase.BASE
 		

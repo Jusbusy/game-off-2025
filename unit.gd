@@ -73,12 +73,14 @@ func _try_attack():
 	
 	play_blocking_animation("attack")
 	
-func _try_move_turn(allow_auto_move = true):
+func _try_move_turn(allow_battle_move, allow_auto_move = true):
 	if health <= 0:
-		return
+		return false
 	var elem = get_local(forward)
-	if (!elem && allow_auto_move) || (elem && elem.health <= 0 && enemy != elem.enemy):
+	if (!elem && allow_auto_move) || (elem && elem.health <= 0 && enemy != elem.enemy && allow_battle_move):
 		move(grid_pos + forward)
+		return true
+	return false
 
 func move(target_pos : Vector2i):
 	if !Rect2i(Vector2i.ZERO, Global.grid_size).has_point(target_pos):
