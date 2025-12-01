@@ -178,7 +178,7 @@ offset_bottom = 46.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_nh4s2")
 theme_override_font_sizes/font_size = 26
-text = "1:37 AM"
+text = "1:37 PM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
