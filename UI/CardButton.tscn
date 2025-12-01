@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cihnt244oywvg"]
+[gd_scene load_steps=9 format=3 uid="uid://cihnt244oywvg"]
 
 [ext_resource type="Texture2D" uid="uid://crwwmge8ygqwc" path="res://UI/Icons/Card_Divide.png" id="1_axw4u"]
 [ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="2_bgnkh"]
+[ext_resource type="Script" uid="uid://bbf126rpyopap" path="res://UI/card_button.gd" id="2_t3xtj"]
+
+[sub_resource type="Theme" id="Theme_t3xtj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfjql"]
 content_margin_left = 2.0
@@ -30,15 +33,22 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 88)
 offset_right = 64.0
 offset_bottom = 88.0
+theme = SubResource("Theme_t3xtj")
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
 button_mask = 3
+shortcut_in_tooltip = false
 icon = ExtResource("1_axw4u")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
+script = ExtResource("2_t3xtj")
 
 [node name="CardName" type="Label" parent="."]
 layout_mode = 1

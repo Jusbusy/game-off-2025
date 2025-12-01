@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://edmieuyfx5lw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3xtj"]
+bg_color = Color(0.9879715, 0.42219287, 0.5849518, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9879715, 0.42219287, 0.5849518, 1)
+border_blend = true
+
+[node name="RichTextLabel" type="Label"]
+offset_right = 3.0
+offset_bottom = 25.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_t3xtj")

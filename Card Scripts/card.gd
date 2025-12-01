@@ -12,6 +12,12 @@ var name: String:
 func get_name() -> String:
 	return ""
 
+var desc: String:
+	get:
+		return get_desc()
+func get_desc() -> String:
+	return "Card description."
+
 var cost: int:
 	get:
 		return get_cost()
