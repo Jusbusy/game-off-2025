@@ -9,7 +9,6 @@
 script = ExtResource("1_e2aj5")
 max_health = 4
 can_move = false
-attack_dmg = Vector2i(1, 1)
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
