@@ -397,12 +397,14 @@ func add_card_to_deck(card: Card):
 	
 	var card_buttons = storage_container.get_children()
 	for i in range(deck.size()):
-		card_buttons[i].icon = deck[i].icon
-		card_buttons[i].get_node("CardName").text = deck[i].name
-		card_buttons[i].get_node("APLabel").text = "%d Kb" % deck[i].cost
-		card_buttons[i].tooltip_text = deck[i].desc
-		card_buttons[i].pressed.connect(
-			email_ui.try_deck_discard.bind(i)
+		var _card_button = card_buttons[i]
+		_card_button.icon = deck[i].icon
+		_card_button.get_node("CardName").text = deck[i].name
+		_card_button.get_node("APLabel").text = "%d Kb" % deck[i].cost
+		_card_button.tooltip_text = deck[i].desc
+		_card_button.pressed.connect(
+			func():
+				email_ui.try_deck_discard(_card_button.get_index())
 		)
 
 func remove_card_from_deck(card_id: int):
@@ -439,9 +441,9 @@ func start_level(id):
 	enemy_base_health = 10
 	player_ap = turn_ap
 	game_ui.visible = true
+	shuffle_draw()
 
 func end_level():
-	#music.stream.set_sync_stream_volume(1, -60)
 	in_level = false
 	for col in grid:
 		for elem in col:
