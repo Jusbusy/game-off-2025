@@ -21,6 +21,14 @@ var emails = [
 	},
 	{
 		"From" : "Boss",
+		"Subject" : "Tutorial",
+		"Content" : 
+		r"""Dear Employee,
+		Learn something.""",
+		"Type" : "Tutorial"
+	},
+	{
+		"From" : "Boss",
 		"Subject" : "Level 1",
 		"Content" : 
 		r"""Dear Employee,
@@ -205,6 +213,20 @@ func open_email(id):
 		
 		"Info":
 			email_content.get_node("ConfirmButton").visible = false
+		
+		"Tutorial":
+			email_content.get_node("ConfirmButton").visible = false
+			var button_instance = Global.card_button.instantiate()
+			email_container.add_child(button_instance)
+			button_instance.icon = load("res://UI/Icons/Card_Heal.png")
+			button_instance.get_node("CardName").text = "Tutorial.exe"
+			button_instance.pressed.connect(
+				func():
+					Global.audio_mouse.play()
+					button_instance.disabled = true
+					Global.start_tutorial()
+			)
+			
 		"Level":
 			email_content.get_node("ConfirmButton").visible = false
 			var level = Global.levels[email["LevelID"]]
