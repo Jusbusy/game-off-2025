@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl34fs123yp3"]
+[gd_scene load_steps=9 format=3 uid="uid://bl34fs123yp3"]
 
 [ext_resource type="PackedScene" uid="uid://dosxtqqkhvkeu" path="res://UI/desktop.tscn" id="1_80nbo"]
 [ext_resource type="AudioStream" uid="uid://c1hwq0ifihijy" path="res://Audio/Punch1__008.ogg" id="2_e2o6t"]
 [ext_resource type="AudioStream" uid="uid://dikne7aqmnmj2" path="res://Audio/MouseClick.wav" id="3_feb5d"]
+[ext_resource type="AudioStream" uid="uid://davt8hbjex12c" path="res://Audio/Music/ConsciousnetTheme(Base).wav" id="4_7jktm"]
+[ext_resource type="AudioStream" uid="uid://3w32chtsmeqh" path="res://Audio/Music/ConsciousnetTheme(Arp).wav" id="5_ryrav"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e2o6t"]
 random_pitch = 1.1
@@ -13,6 +15,13 @@ stream_0/stream = ExtResource("2_e2o6t")
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("3_feb5d")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_eow3j"]
+stream_count = 2
+stream_0/stream = ExtResource("4_7jktm")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("5_ryrav")
+stream_1/volume = 0.0
 
 [node name="Game" type="Node2D"]
 
@@ -49,3 +58,6 @@ max_polyphony = 10
 
 [node name="AudioMouse" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_fc0e3")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_eow3j")

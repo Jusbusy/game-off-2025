@@ -3,6 +3,14 @@ extends Node
 var rng = RandomNumberGenerator.new()
 
 const card_button = preload("res://UI/CardButton.tscn")
+const music_fade_rate = 1
+
+var music:
+	get:
+		var node = get_tree().root.get_node("Game/Music")
+		if !node:
+			print("Attempted to access Music, but could not find it")
+		return node
 
 var audio_mouse:
 	get:
@@ -149,6 +157,11 @@ func _ready():
 		grid[i].resize(grid_size.y)
 
 func _process(_delta):
+	var arp_volume_dir = 1 if in_level else -1
+	var arp_vol = db_to_linear(music.stream.get_sync_stream_volume(1))
+	arp_vol = clamp(arp_vol + arp_volume_dir * _delta * music_fade_rate, 0, 1)
+	music.stream.set_sync_stream_volume(1, linear_to_db(arp_vol))
+	
 	highlight.visible = false
 	
 	if Input.is_action_just_pressed("debug"):
@@ -394,6 +407,10 @@ func use_ap(amt: int):
 	return true
 	
 func start_level(id):
+	#music.stream.set_sync_stream_volume(1, 0)
+	if id == 0:
+		music.stream.set_sync_stream_volume(1, 0)
+		music.play()
 	level_id = id
 	turn_phase = TurnPhase.SPAWN
 	in_level = true
@@ -405,6 +422,8 @@ func start_level(id):
 	game_ui.visible = true
 
 func end_level():
+	#music.stream.set_sync_stream_volume(1, -60)
+	in_level = false
 	for col in grid:
 		for elem in col:
 			if elem:
