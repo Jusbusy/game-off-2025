@@ -82,6 +82,8 @@ var levels = [
 var level_id = 0
 var in_level = false
 var level_over = false
+var in_tutorial = false
+var tutorial_count = 0
 
 #var spawn_freqs = [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
 
@@ -163,6 +165,17 @@ func _process(_delta):
 	music.stream.set_sync_stream_volume(1, linear_to_db(arp_vol))
 	
 	highlight.visible = false
+	
+	if in_tutorial:
+		var tutorial = get_tree().root.get_node("Game/Tutorial")
+		if Input.is_action_just_pressed("select"):
+			audio_mouse.play()
+			tutorial.get_child(tutorial_count).visible = false
+			tutorial_count += 1
+			if tutorial_count >= tutorial.get_child_count():
+				end_tutorial()
+				return
+		tutorial.get_child(tutorial_count).visible = true
 	
 	if Input.is_action_just_pressed("debug"):
 		level_over = true
@@ -452,3 +465,10 @@ func gen_card():
 		if r < 0:
 			return item[0].new()
 	return null
+	
+func start_tutorial():
+	in_tutorial = true
+
+func end_tutorial():
+	in_tutorial = false
+	email_ui.post_next_email()
