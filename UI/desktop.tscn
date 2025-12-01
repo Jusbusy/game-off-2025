@@ -4550,6 +4550,7 @@ texture = ExtResource("24_7lpb2")
 stream = SubResource("AudioStreamRandomizer_t0inq")
 
 [node name="WinLoseLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 274.0
 offset_top = 244.0

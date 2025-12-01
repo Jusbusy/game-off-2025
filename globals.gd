@@ -5,6 +5,10 @@ var rng = RandomNumberGenerator.new()
 const card_button = preload("res://UI/CardButton.tscn")
 const music_fade_rate = 1
 
+var win_label:
+	get:
+		return get_tree().root.get_node("Game/CanvasLayer/Desktop/WinLoseLabel")
+
 var tutorial_ui:
 	get:
 		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/Tutorial")
@@ -104,6 +108,7 @@ var levels = [
 var level_id = 0
 var in_level = false
 var level_over = false
+var level_lost = false
 var in_tutorial = false
 var tutorial_count = 0
 
@@ -333,7 +338,10 @@ func _process(_delta):
 							get_tree().root.get_node("Game/AudioBaseHit").play()
 							enemy_base_health -= elem.health
 							if enemy_base_health <= 0:
+								win_label.visible = true
+								win_label.text = "Good job"
 								level_over = true
+								return
 							elem.kill()
 					)
 			for elem in grid[0]:
@@ -343,6 +351,11 @@ func _process(_delta):
 						func():
 							get_tree().root.get_node("Game/AudioBaseHit").play()
 							player_base_health -= elem.health
+							if player_base_health <= 0:
+								win_label.visible = true
+								win_label.text = "Bad job"
+								level_lost = true
+								level_over = true
 							elem.kill()
 					)
 			
@@ -463,6 +476,7 @@ func start_level(id):
 	player_base_health = 10
 	enemy_base_health = 10
 	player_ap = turn_ap
+	win_label.visible = false
 	game_ui.visible = true
 	shuffle_draw()
 
@@ -477,6 +491,7 @@ func end_level():
 		button.queue_free()
 	shuffle_draw()
 	email_ui.post_next_email()
+	win_label.visible = false
 	game_ui.visible = false
 
 var card_list = [

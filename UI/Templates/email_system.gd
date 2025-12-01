@@ -135,6 +135,14 @@ var emails = [
 		r"""Dear Employee,
 		Nice work with the Conscious.net today! I'll be expecting great things from you in the future.""",
 		"Type" : "Info"
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Your fired.",
+		"Content" : 
+		r"""Dear Employee,
+		Get out.""",
+		"Type" : "Info"
 	}
 ]
 
@@ -171,6 +179,9 @@ func post_next_email():
 	
 	var curr_email = emails[email_id]
 	
+	if Global.level_lost:
+		curr_email = emails[-1]
+	
 	var child_count = email_button_container.get_child_count()
 	if child_count > 0:
 		var prev_button = email_button_container.get_child(child_count - 1)
@@ -190,11 +201,14 @@ func post_next_email():
 var last_open_email = -1
 
 func open_email(id):
+	
 	Global.audio_mouse.play()
 	if last_open_email == id:
 		return
 	last_open_email = id
 	var email = emails[id]
+	if Global.level_lost:
+		email = emails[-1]
 	
 	get_node("InfoInput").text = email["From"] + "\nYou\n\n" + email["Subject"]
 	email_content.get_node("Label").text = email["Content"]
