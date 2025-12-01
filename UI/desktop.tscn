@@ -232,7 +232,6 @@ theme_override_constants/line_spacing = -3
 text = "Storage"
 
 [node name="StorageUI" parent="." instance=ExtResource("10_b7xnl")]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -245,7 +244,6 @@ grow_horizontal = 0
 grow_vertical = 1
 
 [node name="EmailUI" parent="." instance=ExtResource("11_a222k")]
-visible = false
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
@@ -311,7 +309,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Step1" type="Control" parent="Tutorial/Steps"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -997,7 +994,6 @@ offset_bottom = 221.0
 
 [node name="Label" parent="Tutorial/Steps/Step1/Panel2" index="0"]
 text = "Player units can be spawned in the leftmost column."
-autowrap_mode = 2
 
 [node name="Panel3" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
 layout_mode = 0
@@ -1008,7 +1004,6 @@ offset_bottom = 221.0
 
 [node name="Label" parent="Tutorial/Steps/Step1/Panel3" index="0"]
 text = "Enemy units will spawn in the righmost column."
-autowrap_mode = 2
 
 [node name="Panel4" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
 layout_mode = 0
@@ -3731,6 +3726,7 @@ texture = ExtResource("23_klwrj")
 stream = SubResource("AudioStreamRandomizer_t0inq")
 
 [node name="Step5" type="Control" parent="Tutorial/Steps"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

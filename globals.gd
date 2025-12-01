@@ -5,6 +5,13 @@ var rng = RandomNumberGenerator.new()
 const card_button = preload("res://UI/CardButton.tscn")
 const music_fade_rate = 1
 
+var tutorial_ui:
+	get:
+		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/Tutorial")
+		if !node:
+			print("Attempted to access Tutorial, but could not find it")
+		return node
+
 var music:
 	get:
 		var node = get_tree().root.get_node("Game/Music")
@@ -181,7 +188,8 @@ func _process(_delta):
 	highlight.visible = false
 	
 	if in_tutorial:
-		var tutorial = get_tree().root.get_node("Game/Tutorial")
+		tutorial_ui.visible = true
+		var tutorial = tutorial_ui.get_node("Steps")
 		if Input.is_action_just_pressed("select"):
 			audio_mouse.play()
 			tutorial.get_child(tutorial_count).visible = false
@@ -190,6 +198,8 @@ func _process(_delta):
 				end_tutorial()
 				return
 		tutorial.get_child(tutorial_count).visible = true
+	else:
+		tutorial_ui.visible = false
 	
 	if Input.is_action_just_pressed("debug"):
 		level_over = true
