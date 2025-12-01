@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl34fs123yp3"]
+[gd_scene load_steps=4 format=3 uid="uid://bl34fs123yp3"]
 
 [ext_resource type="PackedScene" uid="uid://dosxtqqkhvkeu" path="res://UI/desktop.tscn" id="1_80nbo"]
+[ext_resource type="AudioStream" uid="uid://c1hwq0ifihijy" path="res://Audio/Punch1__008.ogg" id="2_e2o6t"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e2o6t"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_e2o6t")
 
 [node name="Game" type="Node2D"]
 
@@ -30,3 +36,7 @@ offset_top = -28.0
 offset_right = 31.0
 offset_bottom = 36.0
 color = Color(0.9393936, 0.24154592, 0.61347264, 0.47058824)
+
+[node name="AudioBaseHit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_e2o6t")
+max_polyphony = 10

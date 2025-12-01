@@ -268,8 +268,10 @@ func _process(_delta):
 			
 			for elem in grid[grid_size.x - 1]:
 				if elem && !elem.enemy:
+					elem.get_node("AudioAttack").play()
 					elem.play_blocking_animation("attack", 
 						func():
+							get_tree().root.get_node("Game/AudioBaseHit").play()
 							enemy_base_health -= elem.health
 							if enemy_base_health <= 0:
 								level_over = true
@@ -277,8 +279,10 @@ func _process(_delta):
 					)
 			for elem in grid[0]:
 				if elem && elem.enemy:
+					elem.get_node("AudioAttack").play()
 					elem.play_blocking_animation("attack", 
 						func():
+							get_tree().root.get_node("Game/AudioBaseHit").play()
 							player_base_health -= elem.health
 							elem.queue_free()
 					)

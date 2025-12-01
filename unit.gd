@@ -73,6 +73,7 @@ func _try_attack():
 	else:
 		elem.health -= attack_dmg.x
 	
+	get_node("AudioAttack").play()
 	play_blocking_animation("attack")
 	
 func _try_move_turn(allow_battle_move, allow_auto_move = true):

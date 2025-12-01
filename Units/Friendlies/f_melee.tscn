@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://be3sj3gckm8dw"]
+[gd_scene load_steps=12 format=3 uid="uid://be3sj3gckm8dw"]
 
 [ext_resource type="Script" uid="uid://da1eoycqb3jxt" path="res://unit.gd" id="1_v634n"]
 [ext_resource type="Texture2D" uid="uid://cj7g0p7clo6iq" path="res://Sprites/Unit Sprites/1024x1024_CoffeeCup_SpriteSheet.png" id="2_v634n"]
 [ext_resource type="Texture2D" uid="uid://f16gwyyvytur" path="res://Sprites/Attack Sprites/RockAttackIcon.png" id="3_t0inq"]
 [ext_resource type="Texture2D" uid="uid://dlvarjgfoh5je" path="res://Health Bar Sprites/HealthBar4.png" id="4_hsnt5"]
+[ext_resource type="AudioStream" uid="uid://ba4mn528rqepe" path="res://Audio/splash_sound.wav" id="5_tcbs7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcbs7"]
 atlas = ExtResource("2_v634n")
@@ -46,6 +47,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t0inq"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_tcbs7")
+
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_v634n")
 
@@ -64,3 +70,6 @@ texture = ExtResource("3_t0inq")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("4_hsnt5")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_t0inq")
