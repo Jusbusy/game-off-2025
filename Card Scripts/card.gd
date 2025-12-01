@@ -36,9 +36,11 @@ var _curr_selections = []
 func update():
 	if Input.is_action_just_pressed("select"):
 		var select = Global.get_mouse_tile()
-		if select != null && check_selection(select):
-			_curr_selections.append(select)
-			_select_id += 1
+		if select != null:
+			Global.audio_mouse.play()
+			if check_selection(select):
+				_curr_selections.append(select)
+				_select_id += 1
 	
 	if _select_id >= selection_rules.size():
 		Global.player_ap -= cost

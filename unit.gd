@@ -134,6 +134,7 @@ func play_move_animation(start_pos: Vector2i, target_pos: Vector2i):
 	Global.blocking_animations -= 1
 
 func kill():
+	Global.blocking_animations += 1
 	get_node("MainSprite").visible = false
 	get_node("AttackIcon").visible = false
 	get_node("HealthBarSprite").visible = false
@@ -141,6 +142,7 @@ func kill():
 	
 	get_node("SpawnSprite").animation_finished.connect(
 		func(): 
+			Global.blocking_animations -= 1
 			self.queue_free(),
 		CONNECT_ONE_SHOT
 	)

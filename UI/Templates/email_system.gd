@@ -95,6 +95,7 @@ func post_next_email():
 var last_open_email = -1
 
 func open_email(id):
+	Global.audio_mouse.play()
 	if last_open_email == id:
 		return
 	last_open_email = id
@@ -118,6 +119,7 @@ func open_email(id):
 			button_instance.get_node("CardName").text = level["Name"]
 			button_instance.pressed.connect(
 				func():
+					Global.audio_mouse.play()
 					button_instance.disabled = true
 					Global.start_level(email["LevelID"])
 			)
@@ -132,6 +134,7 @@ func open_email(id):
 				button_instance.get_node("APLabel").text = "%d Kb" % card.cost
 				button_instance.pressed.connect(
 					func():
+						Global.audio_mouse.play()
 						Global.add_card_to_deck(card)
 						for button in email_container.get_children():
 							button.disabled = true

@@ -4,6 +4,13 @@ var rng = RandomNumberGenerator.new()
 
 const card_button = preload("res://UI/CardButton.tscn")
 
+var audio_mouse:
+	get:
+		var node = get_tree().root.get_node("Game/AudioMouse")
+		if !node:
+			print("Attempted to access AudioMouse, but could not find it")
+		return node
+
 var email_ui:
 	get:
 		var node = get_tree().root.get_node("Game/CanvasLayer/Desktop/EmailUI")
@@ -129,6 +136,7 @@ func _ready():
 	
 	game_ui.get_node("Back/EndTurnBtn").pressed.connect(
 		func(): 
+			audio_mouse.play()
 			if level_over:
 				end_level()
 				return
@@ -202,6 +210,7 @@ func _process(_delta):
 							var select = Global.get_mouse_tile()
 							if select == null:
 								return
+							audio_mouse.play()
 							var elem = grid[select.x][select.y]
 							if elem && !elem.enemy && use_ap(1):
 								elem.change_attack()
@@ -329,6 +338,7 @@ func draw_cards():
 		card_button_instance.gui_input.connect(
 			func(event): 
 				if event is InputEventMouseButton and event.pressed:
+					audio_mouse.play()
 					match event.button_index:
 						MOUSE_BUTTON_LEFT:
 							selected_card = card_button_instance.get_index()
