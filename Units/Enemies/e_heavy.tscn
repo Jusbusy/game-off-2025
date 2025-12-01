@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://blra7xmsp8u0t"]
+
+[ext_resource type="Script" uid="uid://da1eoycqb3jxt" path="res://unit.gd" id="1_ohihj"]
+[ext_resource type="SpriteFrames" uid="uid://bqu2qb36ixmcd" path="res://Sprites/Unit Sprites/nestea_anims.tres" id="2_ohihj"]
+[ext_resource type="Texture2D" uid="uid://f16gwyyvytur" path="res://Sprites/Attack Sprites/RockAttackIcon.png" id="3_avvcl"]
+[ext_resource type="Texture2D" uid="uid://dlvarjgfoh5je" path="res://Health Bar Sprites/HealthBar4.png" id="4_dnr56"]
+[ext_resource type="SpriteFrames" uid="uid://b0vqeaclchg26" path="res://Sprites/Unit Sprites/poof_effect_anims.tres" id="5_u5yr2"]
+[ext_resource type="AudioStream" uid="uid://c6jj1kg4agkor" path="res://Audio/dream_sheep_atk.wav" id="6_bmjbq"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5kw6y"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_bmjbq")
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_ohihj")
+enemy = true
+max_health = 3
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("2_ohihj")
+animation = &"attack"
+
+[node name="AttackIcon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("3_avvcl")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("4_dnr56")
+
+[node name="SpawnSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("5_u5yr2")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5kw6y")

@@ -69,15 +69,30 @@ var grid = []
 
 var levels = [
 	{
-		"Icon" : "res://UI/Icons/Card_Divide.png",
+		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
 		"Name" : "Level1.exe",
-		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
+		"Freqs" : [["e_melee", 2], ["e_melee", 2],]
 	},
 	{
-		"Icon" : "res://UI/Icons/Card_Divide.png",
-		"Name" : "Level2.exe",
-		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
-	}
+		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
+		"Name" : "Level1.exe",
+		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_fast", 4]]
+	},
+	{
+		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
+		"Name" : "Level1.exe",
+		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_tank", 4]]
+	},
+	{
+		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
+		"Name" : "Level1.exe",
+		"Freqs" : [["e_melee", 2], ["e_heavy", 4], ["e_fast", 4]]
+	},
+	{
+		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
+		"Name" : "Level1.exe",
+		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_heavy", 2], ["e_fast", 4]]
+	},
 ]
 var level_id = 0
 var in_level = false
@@ -122,7 +137,6 @@ var starter_deck = [
 	CardMove.new(), CardMove.new(),
 	CardUnitMelee.new(), CardUnitMelee.new(),
 	CardHeal.new(), CardHeal.new(), CardHeal.new(), CardHeal.new(),
-	CardUnitShield.new(), CardSwap.new()
 ]
 var deck = []
 var draw = []
@@ -441,10 +455,17 @@ func end_level():
 	game_ui.visible = false
 
 var card_list = [
-	[CardMove, 3],
-	[CardUnitMelee, 3],
-	[CardHeal, 3],
-	[CardDivide, 2]
+	[CardMove, 2],
+	[CardUnitMelee, 1],
+	[CardHeal, 1],
+	[CardDivide, 2],
+	
+	[CardExplode, 1],
+	[CardMassHeal, 2],
+	[CardPeasants, 1],
+	[CardPush, 2],
+	[CardReinforcements, 2],
+	[CardUnitShield, 2],
 ]
 
 func gen_card():

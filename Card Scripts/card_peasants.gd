@@ -9,7 +9,7 @@ func get_desc():
 	A 1 health unit will be spawned in every empty space of the column."""
 
 func get_cost():
-	return 2
+	return 3
 func get_selection_rules():
 	return [
 		{"flags" : [SLCT_FRIEND]}, 

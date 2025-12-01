@@ -51,6 +51,85 @@ var emails = [
 		r"""CoolTestMessage""",
 		"Type" : "Level",
 		"LevelID" : 1
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Add a card or something IDK",
+		"Content" : 
+		r"""Dear Employee,
+		Pick a card. Any card!""",
+		"Type" : "AddCard",
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Get rid of a card",
+		"Content" : 
+		r"""Dear Employee,
+		Leave a card. Any card!""",
+		"Type" : "RemoveCard",
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Level3",
+		"Content" : 
+		r"""CoolTestMessage""",
+		"Type" : "Level",
+		"LevelID" : 2
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Add a card or something IDK",
+		"Content" : 
+		r"""Dear Employee,
+		Pick a card. Any card!""",
+		"Type" : "AddCard",
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Get rid of a card",
+		"Content" : 
+		r"""Dear Employee,
+		Leave a card. Any card!""",
+		"Type" : "RemoveCard",
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Level4",
+		"Content" : 
+		r"""CoolTestMessage""",
+		"Type" : "Level",
+		"LevelID" : 3
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Add a card or something IDK",
+		"Content" : 
+		r"""Dear Employee,
+		Pick a card. Any card!""",
+		"Type" : "AddCard",
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Get rid of a card",
+		"Content" : 
+		r"""Dear Employee,
+		Leave a card. Any card!""",
+		"Type" : "RemoveCard",
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Level5",
+		"Content" : 
+		r"""CoolTestMessage""",
+		"Type" : "Level",
+		"LevelID" : 4
+	},
+	{
+		"From" : "Boss",
+		"Subject" : "Good Job",
+		"Content" : 
+		r"""You won!""",
+		"Type" : "Info"
 	}
 ]
 
@@ -116,12 +195,16 @@ func open_email(id):
 	email_content.get_node("Label").text = email["Content"]
 	var email_container = email_content.get_node("EmailContainer")
 	
+	disconnect_confirm()
+	
 	for button in email_container.get_children():
 		button.queue_free()
 	if !email.has("Type"):
 		return
 	match email["Type"]:
 		
+		"Info":
+			email_content.get_node("ConfirmButton").visible = false
 		"Level":
 			email_content.get_node("ConfirmButton").visible = false
 			var level = Global.levels[email["LevelID"]]
@@ -146,7 +229,8 @@ func open_email(id):
 					Global.audio_mouse.play()
 					for button in email_container.get_children():
 						button.disabled = true
-					post_next_email()
+					post_next_email(),
+					CONNECT_ONE_SHOT
 			)
 			for i in range(3):
 				var card = Global.gen_card()
@@ -163,7 +247,7 @@ func open_email(id):
 						Global.add_card_to_deck(card)
 						for button in email_container.get_children():
 							button.disabled = true
-						post_next_email()
+						post_next_email(),
 				)
 		
 		"RemoveCard":
@@ -178,7 +262,8 @@ func open_email(id):
 						button.disabled = true
 					if discard_card != -1:
 						Global.remove_card_from_deck(discard_card)
-					post_next_email()
+					post_next_email(),
+					CONNECT_ONE_SHOT
 			)
 			in_remove = true
 			var button_instance = Global.card_button.instantiate()
@@ -205,3 +290,8 @@ func try_deck_discard(deck_id):
 	card_button.get_node("CardName").text = card.name
 	card_button.get_node("APLabel").text = "%d Kb" % card.cost
 	discard_card = deck_id
+
+func disconnect_confirm():
+	var confirm_button = email_content.get_node("ConfirmButton")
+	for connection in confirm_button.pressed.get_connections():
+		confirm_button.pressed.disconnect(connection.callable)
