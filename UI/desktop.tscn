@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dosxtqqkhvkeu"]
+[gd_scene load_steps=42 format=3 uid="uid://dosxtqqkhvkeu"]
 
 [ext_resource type="Texture2D" uid="uid://rkg7ry1y1s0g" path="res://UI/Templates/Wallpaper.png" id="1_6no7a"]
 [ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_nh4s2"]
@@ -12,6 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://dbcf3wykk7s2o" path="res://UI/Templates/storage.tscn" id="10_b7xnl"]
 [ext_resource type="PackedScene" uid="uid://5ym71wtj5mmn" path="res://UI/Templates/email_ui.tscn" id="11_a222k"]
 [ext_resource type="PackedScene" uid="uid://c8pt55iv0fawq" path="res://UI/Templates/game_area_ui.tscn" id="12_s1ged"]
+[ext_resource type="PackedScene" uid="uid://bvef22y047sid" path="res://UI/Templates/TutorialBox.tscn" id="13_ptghc"]
+[ext_resource type="Texture2D" uid="uid://1epdsv8crshr" path="res://Sprites/Unit Sprites/1024x1024_DreamSheep_SpriteSheet.png" id="14_8lwle"]
+[ext_resource type="Texture2D" uid="uid://f16gwyyvytur" path="res://Sprites/Attack Sprites/RockAttackIcon.png" id="15_newix"]
+[ext_resource type="Texture2D" uid="uid://dlvarjgfoh5je" path="res://Health Bar Sprites/HealthBar4.png" id="16_e8hwj"]
+[ext_resource type="AudioStream" uid="uid://c6jj1kg4agkor" path="res://Audio/dream_sheep_atk.wav" id="17_gfvu3"]
+[ext_resource type="SpriteFrames" uid="uid://ct8akx3gdfad5" path="res://Sprites/Unit Sprites/coffe_cup_anims.tres" id="18_8818d"]
+[ext_resource type="AudioStream" uid="uid://ba4mn528rqepe" path="res://Audio/splash_sound.wav" id="19_04my1"]
+[ext_resource type="Texture2D" uid="uid://dc54gqusuffg1" path="res://UI/Icons/Card_Move.png" id="20_gfvu3"]
+[ext_resource type="Texture2D" uid="uid://dipfrx4gkqm55" path="res://UI/Icons/Card_Melee.png" id="21_8818d"]
+[ext_resource type="Texture2D" uid="uid://8cjfxul8yl5n" path="res://UI/Icons/Card_Heal.png" id="22_04my1"]
+[ext_resource type="Texture2D" uid="uid://dqli750y4xjh4" path="res://Health Bar Sprites/HealthBar3.png" id="23_klwrj"]
+[ext_resource type="Texture2D" uid="uid://bb8kw715ww2xq" path="res://Health Bar Sprites/HealthBar2.png" id="24_7lpb2"]
+[ext_resource type="Texture2D" uid="uid://6v0hgxspxhwx" path="res://Sprites/Attack Sprites/PaperAttackIcon.png" id="25_yudj2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r1dpw"]
 texture = ExtResource("1_6no7a")
@@ -31,6 +44,86 @@ texture_margin_right = 1.0
 texture_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfrka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfjql"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.5294118, 0.5294118, 0.5294118, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpfy0"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.15294118, 0.15294118, 0.15294118, 0.49411765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0rig"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpfy0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0jpo"]
+bg_color = Color(1, 0.5951299, 0.81305677, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuoie"]
+atlas = ExtResource("14_8lwle")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5b6v"]
+atlas = ExtResource("14_8lwle")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7606"]
+atlas = ExtResource("14_8lwle")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlnjh"]
+atlas = ExtResource("14_8lwle")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hsi5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuoie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5b6v")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7606")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlnjh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d5b6v"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("17_gfvu3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t0inq"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("19_04my1")
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -139,6 +232,7 @@ theme_override_constants/line_spacing = -3
 text = "Storage"
 
 [node name="StorageUI" parent="." instance=ExtResource("10_b7xnl")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -151,6 +245,7 @@ grow_horizontal = 0
 grow_vertical = 1
 
 [node name="EmailUI" parent="." instance=ExtResource("11_a222k")]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
@@ -175,5 +270,4314 @@ offset_bottom = 3.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialGameUI" parent="Tutorial" instance=ExtResource("12_s1ged")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 3.0
+offset_right = 144.0
+offset_bottom = 3.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TutorialStorageUI" parent="Tutorial" instance=ExtResource("10_b7xnl")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 772.0
+offset_top = 3.0
+offset_right = 772.0
+offset_bottom = 3.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Steps" type="Control" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Step1" type="Control" parent="Tutorial/Steps"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 2.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 157.0
+offset_top = 492.0
+offset_right = 221.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card2" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 492.0
+offset_right = 292.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card3" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 297.0
+offset_top = 492.0
+offset_right = 361.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card4" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 102.0
+offset_right = 849.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card5" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 102.0
+offset_right = 920.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card6" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 102.0
+offset_right = 989.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card7" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 198.0
+offset_right = 849.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card8" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 198.0
+offset_right = 920.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card9" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 198.0
+offset_right = 989.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card10" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 102.0
+offset_right = 1059.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card11" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 102.0
+offset_right = 1128.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card12" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 198.0
+offset_right = 1059.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card13" type="Button" parent="Tutorial/Steps/Step1"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 198.0
+offset_right = 1128.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step1/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step1/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Panel" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 100.0
+offset_right = 491.0
+offset_bottom = 145.0
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel" index="0"]
+text = "Welcome to Concious.net! Here's
+a quick rundown to get you
+started."
+
+[node name="Panel2" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 176.0
+offset_right = 266.0
+offset_bottom = 221.0
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel2" index="0"]
+text = "Player units can be spawned in the leftmost column."
+autowrap_mode = 2
+
+[node name="Panel3" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 176.0
+offset_right = 502.0
+offset_bottom = 221.0
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel3" index="0"]
+text = "Enemy units will spawn in the righmost column."
+autowrap_mode = 2
+
+[node name="Panel4" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 159.47
+offset_top = 321.0
+offset_right = 227.47
+offset_bottom = 366.0
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel4" index="0"]
+text = "This is the unit's attack order. "
+
+[node name="Panel8" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 182.575
+offset_top = 405.7
+offset_right = 341.0
+offset_bottom = 419.7
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel8" index="0"]
+text = "This is your current hand."
+
+[node name="Panel17" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 960.69
+offset_top = 66.0
+offset_right = 1088.0
+offset_bottom = 79.290016
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel17" index="0"]
+text = "This is your current deck."
+
+[node name="Panel18" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 828.39
+offset_top = 296.34
+offset_right = 955.70074
+offset_bottom = 372.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel18" index="0"]
+text = "Any delt cards are greyed out. They will become available again after all cards have been delt."
+
+[node name="Panel5" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 321.0
+offset_right = 506.0
+offset_bottom = 352.0
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel5" index="0"]
+text = "This is the unit's health. "
+
+[node name="Panel12" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 409.925
+offset_top = 418.08
+offset_right = 486.26498
+offset_bottom = 446.895
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel12" index="0"]
+text = "This is the player's health"
+
+[node name="Panel20" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 1006.925
+offset_top = 307.08
+offset_right = 1083.265
+offset_bottom = 335.895
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel20" index="0"]
+text = "This is the cards AP cost"
+
+[node name="Panel16" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 509.18
+offset_right = 516.0
+offset_bottom = 537.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel16" index="0"]
+text = "This is your ap"
+
+[node name="Panel14" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 372.925
+offset_top = 375.08
+offset_right = 449.26498
+offset_bottom = 403.895
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step1/Panel14" index="0"]
+offset_right = 6.735016
+text = "This is the enemy's health"
+
+[node name="Panel6" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 305.0
+offset_right = 486.0
+offset_bottom = 319.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel7" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 307.0
+offset_right = 166.0
+offset_bottom = 317.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel9" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 424.0
+offset_right = 259.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel11" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 424.0
+offset_right = 333.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel13" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 449.0
+offset_right = 413.0
+offset_bottom = 492.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel15" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 407.0
+offset_right = 385.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel19" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 195.0
+offset_right = 875.0
+offset_bottom = 293.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel21" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 1028.0
+offset_top = 284.0
+offset_right = 1029.0
+offset_bottom = 303.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel10" type="Panel" parent="Tutorial/Steps/Step1"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 424.0
+offset_right = 194.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Unit" type="Node2D" parent="Tutorial/Steps/Step1"]
+position = Vector2(478, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step1/Unit"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.18606228
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step1/Unit"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step1/Unit"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step1/Unit"]
+stream = SubResource("AudioStreamRandomizer_d5b6v")
+
+[node name="Unit2" type="Node2D" parent="Tutorial/Steps/Step1"]
+position = Vector2(189, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step1/Unit2"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step1/Unit2"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step1/Unit2"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step1/Unit2"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Step2" type="Control" parent="Tutorial/Steps"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 2.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 157.0
+offset_top = 492.0
+offset_right = 221.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card2" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 492.0
+offset_right = 292.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card3" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 297.0
+offset_top = 492.0
+offset_right = 361.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card4" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 102.0
+offset_right = 849.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card5" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 102.0
+offset_right = 920.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card6" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 102.0
+offset_right = 989.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card7" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 198.0
+offset_right = 849.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card8" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 198.0
+offset_right = 920.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card9" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 198.0
+offset_right = 989.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card10" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 102.0
+offset_right = 1059.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card11" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 102.0
+offset_right = 1128.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card12" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 198.0
+offset_right = 1059.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card13" type="Button" parent="Tutorial/Steps/Step2"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 198.0
+offset_right = 1128.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step2/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step2/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Panel8" parent="Tutorial/Steps/Step2" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 182.575
+offset_top = 346.195
+offset_right = 288.0
+offset_bottom = 420.89502
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step2/Panel8" index="0"]
+text = "You can play cards  by left clicking them in your hand and selecting a unit or tile."
+
+[node name="Panel12" parent="Tutorial/Steps/Step2" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 306.575
+offset_top = 345.665
+offset_right = 412.0
+offset_bottom = 420.36502
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step2/Panel12" index="0"]
+text = "You can discard cards  by right clicking them in your hand."
+
+[node name="Panel14" type="Panel" parent="Tutorial/Steps/Step2"]
+layout_mode = 0
+offset_left = 307.7
+offset_top = 102.61
+offset_right = 497.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" type="Label" parent="Tutorial/Steps/Step2/Panel14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dyita")
+theme_override_font_sizes/font_size = 26
+text = "Playing Cards"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel13" parent="Tutorial/Steps/Step2" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 306.0
+offset_right = 364.0
+offset_bottom = 336.375
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step2/Panel13" index="0"]
+text = "You can deselect card by pressing \"esc\""
+
+[node name="Panel15" parent="Tutorial/Steps/Step2" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 424.215
+offset_top = 390.98
+offset_right = 496.215
+offset_bottom = 421.355
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step2/Panel15" index="0"]
+text = "Playing cards cost AP"
+
+[node name="Panel9" type="Panel" parent="Tutorial/Steps/Step2"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 424.0
+offset_right = 259.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel11" type="Panel" parent="Tutorial/Steps/Step2"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 424.0
+offset_right = 333.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel16" type="Panel" parent="Tutorial/Steps/Step2"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 424.0
+offset_right = 456.0
+offset_bottom = 515.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel10" type="Panel" parent="Tutorial/Steps/Step2"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 424.0
+offset_right = 194.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Unit" type="Node2D" parent="Tutorial/Steps/Step2"]
+position = Vector2(478, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step2/Unit"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.18606228
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step2/Unit"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step2/Unit"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step2/Unit"]
+stream = SubResource("AudioStreamRandomizer_d5b6v")
+
+[node name="Unit2" type="Node2D" parent="Tutorial/Steps/Step2"]
+position = Vector2(189, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step2/Unit2"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step2/Unit2"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step2/Unit2"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step2/Unit2"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Step3" type="Control" parent="Tutorial/Steps"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 2.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 157.0
+offset_top = 492.0
+offset_right = 221.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card2" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 492.0
+offset_right = 292.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card3" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 297.0
+offset_top = 492.0
+offset_right = 361.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card4" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 102.0
+offset_right = 849.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card5" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 102.0
+offset_right = 920.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card6" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 102.0
+offset_right = 989.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card7" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 198.0
+offset_right = 849.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card8" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 198.0
+offset_right = 920.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card9" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 198.0
+offset_right = 989.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card10" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 102.0
+offset_right = 1059.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card11" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 102.0
+offset_right = 1128.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card12" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 198.0
+offset_right = 1059.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card13" type="Button" parent="Tutorial/Steps/Step3"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 198.0
+offset_right = 1128.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step3/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step3/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Panel14" type="Panel" parent="Tutorial/Steps/Step3"]
+layout_mode = 0
+offset_left = 307.7
+offset_top = 102.61
+offset_right = 497.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" type="Label" parent="Tutorial/Steps/Step3/Panel14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dyita")
+theme_override_font_sizes/font_size = 26
+text = "After a turn"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel13" parent="Tutorial/Steps/Step3" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 193.215
+offset_top = 347.7
+offset_right = 334.21442
+offset_bottom = 423.075
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step3/Panel13" index="0"]
+text = "A new hand will be dealt. Any remaining cards from the previous round will carry over. You can only have a hand of three"
+
+[node name="Panel15" parent="Tutorial/Steps/Step3" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 343.97
+offset_top = 160.0
+offset_right = 439.75943
+offset_bottom = 223.39505
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step3/Panel15" index="0"]
+text = "New enemies may spawn. Enemy units on the field will auto advance"
+
+[node name="Panel16" parent="Tutorial/Steps/Step3" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 235.97
+offset_top = 160.0
+offset_right = 331.75943
+offset_bottom = 223.39505
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step3/Panel16" index="0"]
+text = "Player units may only auto advance as far as the furthest unit."
+
+[node name="Panel9" type="Panel" parent="Tutorial/Steps/Step3"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 424.0
+offset_right = 259.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel11" type="Panel" parent="Tutorial/Steps/Step3"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 424.0
+offset_right = 333.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Panel10" type="Panel" parent="Tutorial/Steps/Step3"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 424.0
+offset_right = 194.0
+offset_bottom = 490.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Unit" type="Node2D" parent="Tutorial/Steps/Step3"]
+position = Vector2(403.335, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step3/Unit"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.18606228
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step3/Unit"]
+stream = SubResource("AudioStreamRandomizer_d5b6v")
+
+[node name="Unit4" type="Node2D" parent="Tutorial/Steps/Step3"]
+position = Vector2(478, 195.765)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step3/Unit4"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.18606228
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit4"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit4"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step3/Unit4"]
+stream = SubResource("AudioStreamRandomizer_d5b6v")
+
+[node name="Unit2" type="Node2D" parent="Tutorial/Steps/Step3"]
+position = Vector2(259.575, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step3/Unit2"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit2"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit2"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step3/Unit2"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Unit3" type="Node2D" parent="Tutorial/Steps/Step3"]
+position = Vector2(189, 196.55)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step3/Unit3"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit3"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step3/Unit3"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("16_e8hwj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step3/Unit3"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Step4" type="Control" parent="Tutorial/Steps"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 2.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 157.0
+offset_top = 492.0
+offset_right = 221.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card2" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 492.0
+offset_right = 292.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card3" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 297.0
+offset_top = 492.0
+offset_right = 361.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card4" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 102.0
+offset_right = 849.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card5" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 102.0
+offset_right = 920.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card6" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 102.0
+offset_right = 989.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card7" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 198.0
+offset_right = 849.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card8" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 198.0
+offset_right = 920.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card9" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 198.0
+offset_right = 989.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card10" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 102.0
+offset_right = 1059.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card11" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 102.0
+offset_right = 1128.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card12" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 198.0
+offset_right = 1059.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card13" type="Button" parent="Tutorial/Steps/Step4"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 198.0
+offset_right = 1128.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step4/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step4/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Panel14" type="Panel" parent="Tutorial/Steps/Step4"]
+layout_mode = 0
+offset_left = 307.7
+offset_top = 102.61
+offset_right = 497.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" type="Label" parent="Tutorial/Steps/Step4/Panel14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dyita")
+theme_override_font_sizes/font_size = 26
+text = "Attack Order"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel13" parent="Tutorial/Steps/Step4" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 155.215
+offset_top = 102.70001
+offset_right = 286.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step4/Panel13" index="0"]
+text = "Attacks are a game of rock, paper, scissors "
+
+[node name="Panel15" parent="Tutorial/Steps/Step4" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 155.215
+offset_top = 182.70001
+offset_right = 285.0
+offset_bottom = 223.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step4/Panel15" index="0"]
+text = "Winning plays deal double damage to losing unit"
+
+[node name="Panel16" parent="Tutorial/Steps/Step4" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 155.215
+offset_top = 254.70001
+offset_right = 285.0
+offset_bottom = 287.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step4/Panel16" index="0"]
+text = "Stalemate plays deal only 1 damage"
+
+[node name="Panel17" parent="Tutorial/Steps/Step4" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 155.215
+offset_top = 320.7
+offset_right = 394.0
+offset_bottom = 353.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step4/Panel17" index="0"]
+text = "You can change the attack order of a unit by left clicking on them. This will cost 1 AP"
+
+[node name="Unit" type="Node2D" parent="Tutorial/Steps/Step4"]
+position = Vector2(403.335, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step4/Unit"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.18606228
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("23_klwrj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step4/Unit"]
+stream = SubResource("AudioStreamRandomizer_d5b6v")
+
+[node name="Unit4" type="Node2D" parent="Tutorial/Steps/Step4"]
+position = Vector2(403.52, 195.765)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step4/Unit4"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.18606228
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit4"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit4"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("24_7lpb2")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step4/Unit4"]
+stream = SubResource("AudioStreamRandomizer_d5b6v")
+
+[node name="Unit2" type="Node2D" parent="Tutorial/Steps/Step4"]
+position = Vector2(329.215, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step4/Unit2"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit2"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit2"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("23_klwrj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step4/Unit2"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Unit3" type="Node2D" parent="Tutorial/Steps/Step4"]
+position = Vector2(330.695, 196.55)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step4/Unit3"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit3"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("25_yudj2")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step4/Unit3"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("23_klwrj")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step4/Unit3"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Step5" type="Control" parent="Tutorial/Steps"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 2.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 157.0
+offset_top = 492.0
+offset_right = 221.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card2" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 228.0
+offset_top = 492.0
+offset_right = 292.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card3" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 297.0
+offset_top = 492.0
+offset_right = 361.0
+offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card4" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 102.0
+offset_right = 849.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card5" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 102.0
+offset_right = 920.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card6" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 102.0
+offset_right = 989.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card7" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 198.0
+offset_right = 849.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("20_gfvu3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Move"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card8" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 856.0
+offset_top = 198.0
+offset_right = 920.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card9" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 198.0
+offset_right = 989.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card10" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 102.0
+offset_right = 1059.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card11" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 102.0
+offset_right = 1128.0
+offset_bottom = 190.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card12" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 995.0
+offset_top = 198.0
+offset_right = 1059.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+button_mask = 3
+icon = ExtResource("21_8818d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Spawn"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card12"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Card13" type="Button" parent="Tutorial/Steps/Step5"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 88)
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 198.0
+offset_right = 1128.0
+offset_bottom = 286.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfjql")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xpfy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0rig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xpfy0")
+disabled = true
+button_mask = 3
+icon = ExtResource("22_04my1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CardName" type="Label" parent="Tutorial/Steps/Step5/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 62.0
+offset_right = 37.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "Heal"
+horizontal_alignment = 1
+
+[node name="APLabel" type="Label" parent="Tutorial/Steps/Step5/Card13"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 72.61499
+offset_right = 37.0
+offset_bottom = 88.61499
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_nh4s2")
+theme_override_font_sizes/font_size = 13
+text = "1 Kb"
+horizontal_alignment = 1
+
+[node name="Panel14" type="Panel" parent="Tutorial/Steps/Step5"]
+layout_mode = 0
+offset_left = 307.7
+offset_top = 102.61
+offset_right = 497.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" type="Label" parent="Tutorial/Steps/Step5/Panel14"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dyita")
+theme_override_font_sizes/font_size = 26
+text = "Winning"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel13" parent="Tutorial/Steps/Step5" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 155.215
+offset_top = 102.70001
+offset_right = 286.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step5/Panel13" index="0"]
+text = "Your goal is to deplete your opponent's health"
+
+[node name="Panel15" parent="Tutorial/Steps/Step5" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 231.13
+offset_top = 182.7
+offset_right = 360.91516
+offset_bottom = 215.99998
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step5/Panel15" index="0"]
+text = "Defeating a unit will advance the unit forward"
+
+[node name="Panel17" parent="Tutorial/Steps/Step5" instance=ExtResource("13_ptghc")]
+layout_mode = 0
+offset_left = 191.07
+offset_top = 374.0
+offset_right = 429.85486
+offset_bottom = 434.47998
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" parent="Tutorial/Steps/Step5/Panel17" index="0"]
+text = "Units that reach the other side of the board will directly attack their opponent's health. The damage dealt is equal to the unit's health. After dealing damage the unit will be removed"
+
+[node name="Unit" type="Node2D" parent="Tutorial/Steps/Step5"]
+position = Vector2(403.335, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step5/Unit"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8hsi5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.18606228
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("24_7lpb2")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step5/Unit"]
+stream = SubResource("AudioStreamRandomizer_d5b6v")
+
+[node name="Unit2" type="Node2D" parent="Tutorial/Steps/Step5"]
+position = Vector2(329.215, 267)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step5/Unit2"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit2"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit2"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("24_7lpb2")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step5/Unit2"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Unit4" type="Node2D" parent="Tutorial/Steps/Step5"]
+position = Vector2(474.82, 412.26)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step5/Unit4"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit4"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("15_newix")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit4"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("24_7lpb2")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step5/Unit4"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="Unit3" type="Node2D" parent="Tutorial/Steps/Step5"]
+position = Vector2(404.695, 196.55)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="Tutorial/Steps/Step5/Unit3"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("18_8818d")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AttackIcon" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit3"]
+texture_filter = 1
+position = Vector2(-25, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("25_yudj2")
+
+[node name="HealthBarSprite" type="Sprite2D" parent="Tutorial/Steps/Step5/Unit3"]
+texture_filter = 1
+position = Vector2(8, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("24_7lpb2")
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step5/Unit3"]
+stream = SubResource("AudioStreamRandomizer_t0inq")
+
 [editable path="Shortcut"]
 [editable path="Shortcut2"]
+[editable path="Tutorial/Steps/Step1/Panel"]
+[editable path="Tutorial/Steps/Step1/Panel2"]
+[editable path="Tutorial/Steps/Step1/Panel3"]
+[editable path="Tutorial/Steps/Step1/Panel4"]
+[editable path="Tutorial/Steps/Step1/Panel8"]
+[editable path="Tutorial/Steps/Step1/Panel17"]
+[editable path="Tutorial/Steps/Step1/Panel18"]
+[editable path="Tutorial/Steps/Step1/Panel5"]
+[editable path="Tutorial/Steps/Step1/Panel12"]
+[editable path="Tutorial/Steps/Step1/Panel20"]
+[editable path="Tutorial/Steps/Step1/Panel16"]
+[editable path="Tutorial/Steps/Step1/Panel14"]
+[editable path="Tutorial/Steps/Step2/Panel8"]
+[editable path="Tutorial/Steps/Step2/Panel12"]
+[editable path="Tutorial/Steps/Step2/Panel13"]
+[editable path="Tutorial/Steps/Step2/Panel15"]
+[editable path="Tutorial/Steps/Step3/Panel13"]
+[editable path="Tutorial/Steps/Step3/Panel15"]
+[editable path="Tutorial/Steps/Step3/Panel16"]
+[editable path="Tutorial/Steps/Step4/Panel13"]
+[editable path="Tutorial/Steps/Step4/Panel15"]
+[editable path="Tutorial/Steps/Step4/Panel16"]
+[editable path="Tutorial/Steps/Step4/Panel17"]
+[editable path="Tutorial/Steps/Step5/Panel13"]
+[editable path="Tutorial/Steps/Step5/Panel15"]
+[editable path="Tutorial/Steps/Step5/Panel17"]
