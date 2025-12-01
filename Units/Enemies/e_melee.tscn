@@ -59,18 +59,20 @@ enemy = true
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8hsi5")
 animation = &"idle"
 frame_progress = 0.18606228
 
 [node name="AttackIcon" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-25, 31)
 scale = Vector2(2, 2)
 texture = ExtResource("3_d5b6v")
 
 [node name="HealthBarSprite" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(8, 12)
 scale = Vector2(2, 2)
 texture = ExtResource("4_w7606")
 

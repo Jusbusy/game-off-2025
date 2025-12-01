@@ -19,17 +19,19 @@ can_move = false
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = ExtResource("2_e2aj5")
 animation = &"attack"
 
 [node name="AttackIcon" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-25, 31)
 scale = Vector2(2, 2)
 texture = ExtResource("3_565an")
 
 [node name="HealthBarSprite" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(8, 12)
 scale = Vector2(2, 2)
 texture = ExtResource("4_n2gfh")
 
