@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjnua5yyt7wwb"]
+[gd_scene load_steps=8 format=3 uid="uid://bjnua5yyt7wwb"]
 
 [ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_tkib7"]
+[ext_resource type="Texture2D" uid="uid://yraew62rsbfw" path="res://UI/Templates/CancelButton.png" id="2_xog85"]
+[ext_resource type="Texture2D" uid="uid://d4f4cp5yr2kdc" path="res://UI/Templates/CancelButton_Inv.png" id="3_a8nf0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avl6b"]
+texture = ExtResource("2_xog85")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4owd"]
+texture = ExtResource("3_a8nf0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nshf"]
+texture = ExtResource("2_xog85")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nms51"]
 
 [node name="Email" type="Control"]
 layout_mode = 3
@@ -26,3 +39,20 @@ offset_top = 480.0
 offset_right = 290.0
 offset_bottom = 568.0
 alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 310.0
+offset_top = 500.0
+offset_right = 324.0
+offset_bottom = 513.0
+scale = Vector2(2.25, 2.25)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_tkib7")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_avl6b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x4owd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6nshf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nms51")

@@ -387,6 +387,9 @@ func add_card_to_deck(card: Card):
 		card_buttons[i].get_node("CardName").text = deck[i].name
 		card_buttons[i].get_node("APLabel").text = "%d Kb" % deck[i].cost
 		card_buttons[i].tooltip_text = deck[i].desc
+		card_buttons[i].pressed.connect(
+			email_ui.try_deck_discard.bind(i)
+		)
 
 func remove_card_from_deck(card_id: int):
 	deck.remove_at(card_id)

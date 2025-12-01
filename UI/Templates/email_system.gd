@@ -38,6 +38,14 @@ var emails = [
 	},
 	{
 		"From" : "Boss",
+		"Subject" : "Get rid of a card",
+		"Content" : 
+		r"""Dear Employee,
+		Leave a card. Any card!""",
+		"Type" : "RemoveCard",
+	},
+	{
+		"From" : "Boss",
 		"Subject" : "Level2",
 		"Content" : 
 		r"""CoolTestMessage""",
@@ -63,6 +71,9 @@ var email_content:
 const email_button = preload("res://UI/email_button.tscn")
 
 var email_id = 0
+
+var in_remove = false
+var discard_card = -1
 
 func _ready():
 	post_next_email()
@@ -112,6 +123,7 @@ func open_email(id):
 	match email["Type"]:
 		
 		"Level":
+			email_content.get_node("ConfirmButton").visible = false
 			var level = Global.levels[email["LevelID"]]
 			var button_instance = Global.card_button.instantiate()
 			email_container.add_child(button_instance)
@@ -125,6 +137,17 @@ func open_email(id):
 			)
 		
 		"AddCard":
+			var confirm_button = email_content.get_node("ConfirmButton")
+			confirm_button.visible = true
+			confirm_button.disabled = false
+			confirm_button.pressed.connect(
+				func():
+					confirm_button.disabled = true
+					Global.audio_mouse.play()
+					for button in email_container.get_children():
+						button.disabled = true
+					post_next_email()
+			)
 			for i in range(3):
 				var card = Global.gen_card()
 				var button_instance = Global.card_button.instantiate()
@@ -135,9 +158,50 @@ func open_email(id):
 				button_instance.tooltip_text = card.desc
 				button_instance.pressed.connect(
 					func():
+						confirm_button.disabled = true
 						Global.audio_mouse.play()
 						Global.add_card_to_deck(card)
 						for button in email_container.get_children():
 							button.disabled = true
 						post_next_email()
 				)
+		
+		"RemoveCard":
+			var confirm_button = email_content.get_node("ConfirmButton")
+			confirm_button.visible = true
+			confirm_button.disabled = false
+			confirm_button.pressed.connect(
+				func():
+					confirm_button.disabled = true
+					Global.audio_mouse.play()
+					for button in email_container.get_children():
+						button.disabled = true
+					if discard_card != -1:
+						Global.remove_card_from_deck(discard_card)
+					post_next_email()
+			)
+			in_remove = true
+			var button_instance = Global.card_button.instantiate()
+			email_container.add_child(button_instance)
+			button_instance.icon = null
+			button_instance.get_node("CardName").text = ""
+			button_instance.get_node("APLabel").text = ""
+			discard_card = -1
+			button_instance.pressed.connect(
+				func():
+					Global.audio_mouse.play()
+					button_instance.icon = null
+					button_instance.get_node("CardName").text = ""
+					button_instance.get_node("APLabel").text = ""
+					discard_card = -1
+			)
+
+func try_deck_discard(deck_id):
+	if !in_remove:
+		return
+	var card = Global.deck[deck_id]
+	var card_button = email_content.get_node("EmailContainer").get_child(0)
+	card_button.icon = card.icon
+	card_button.get_node("CardName").text = card.name
+	card_button.get_node("APLabel").text = "%d Kb" % card.cost
+	discard_card = deck_id
