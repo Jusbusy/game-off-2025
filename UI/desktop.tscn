@@ -1046,7 +1046,7 @@ offset_bottom = 372.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
 
 [node name="Label" parent="Tutorial/Steps/Step1/Panel18" index="0"]
-text = "Any delt cards are greyed out. They will become available again after all cards have been delt."
+text = "Any dealt cards are greyed out. They will become available again after all cards have been dealt."
 
 [node name="Panel5" parent="Tutorial/Steps/Step1" instance=ExtResource("13_ptghc")]
 layout_mode = 0
@@ -4548,6 +4548,16 @@ texture = ExtResource("24_7lpb2")
 
 [node name="AudioAttack" type="AudioStreamPlayer2D" parent="Tutorial/Steps/Step5/Unit3"]
 stream = SubResource("AudioStreamRandomizer_t0inq")
+
+[node name="WinLoseLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 274.0
+offset_top = 244.0
+offset_right = 387.0
+offset_bottom = 269.45834
+theme_override_fonts/font = ExtResource("3_dyita")
+theme_override_font_sizes/font_size = 26
+text = "Good Job"
 
 [editable path="Shortcut"]
 [editable path="Shortcut2"]
