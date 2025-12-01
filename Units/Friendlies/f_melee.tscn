@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://be3sj3gckm8dw"]
+[gd_scene load_steps=13 format=3 uid="uid://be3sj3gckm8dw"]
 
 [ext_resource type="Script" uid="uid://da1eoycqb3jxt" path="res://unit.gd" id="1_v634n"]
 [ext_resource type="Texture2D" uid="uid://cj7g0p7clo6iq" path="res://Sprites/Unit Sprites/1024x1024_CoffeeCup_SpriteSheet.png" id="2_v634n"]
 [ext_resource type="Texture2D" uid="uid://f16gwyyvytur" path="res://Sprites/Attack Sprites/RockAttackIcon.png" id="3_t0inq"]
 [ext_resource type="Texture2D" uid="uid://dlvarjgfoh5je" path="res://Health Bar Sprites/HealthBar4.png" id="4_hsnt5"]
+[ext_resource type="SpriteFrames" uid="uid://b0vqeaclchg26" path="res://Sprites/Unit Sprites/poof_effect_anims.tres" id="5_t0inq"]
 [ext_resource type="AudioStream" uid="uid://ba4mn528rqepe" path="res://Audio/splash_sound.wav" id="5_tcbs7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcbs7"]
@@ -70,6 +71,9 @@ texture = ExtResource("3_t0inq")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("4_hsnt5")
+
+[node name="SpawnSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("5_t0inq")
 
 [node name="AudioAttack" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_t0inq")

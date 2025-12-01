@@ -54,6 +54,7 @@ const health_bar_3 = preload("res://Health Bar Sprites/HealthBar3.png")
 const health_bar_4 = preload("res://Health Bar Sprites/HealthBar4.png")
 
 func _ready():
+	get_node("SpawnSprite").play()
 	health = max_health
 
 func _process(_delta):
