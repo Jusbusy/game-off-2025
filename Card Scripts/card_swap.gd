@@ -22,4 +22,3 @@ func do_effect():
 	unit.move(enemy_pos)
 	enemy.move(unit_pos)
 	Global.grid[enemy_pos.x][enemy_pos.y] = unit
-	unit.health -= 1
