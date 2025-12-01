@@ -21,10 +21,10 @@ var emails = [
 	},
 	{
 		"From" : "Boss",
-		"Subject" : "Tutorial",
+		"Subject" : "PROMOTION",
 		"Content" : 
 		r"""Dear Employee,
-		Learn something.""",
+		Good news you're promoted! Bad news its a punishment. You've forgotten to bring in the coffee too many times so you'll be running Conscious.net this meeting as a backup. Here's a tutorial to show you the ropes.""",
 		"Type" : "Tutorial"
 	},
 	{
@@ -32,103 +32,99 @@ var emails = [
 		"Subject" : "Level 1",
 		"Content" : 
 		r"""Dear Employee,
-		This is a test email. It is also long to check for looooong messages.""",
+		Trainings over! Here's your first job. Don't dissapoint me.""",
 		"Type" : "Level",
 		"LevelID" : 0
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Add a card or something IDK",
+		"From" : "Card Download",
+		"Subject" : "Add a card to your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Pick a card. Any card!""",
+		r"""Click one of the cards below to add it to your deck! Or click the "X" to skip!""",
 		"Type" : "AddCard",
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Get rid of a card",
+		"From" : "Card Removal",
+		"Subject" : "Remove a card from your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Leave a card. Any card!""",
+		r"""Click one of the cards in your STORAGE, then click the "X" to throw it away permanently. Don't want to remove anything. You can click on the card in the email to select nothing and click the "X" to skip. """,
 		"Type" : "RemoveCard",
 	},
 	{
 		"From" : "Boss",
-		"Subject" : "Level2",
+		"Subject" : "Level 2",
 		"Content" : 
-		r"""CoolTestMessage""",
+		r"""Dear Employee,
+		Gotten used to your new job yet? Great! Here's your next task.""",
 		"Type" : "Level",
 		"LevelID" : 1
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Add a card or something IDK",
+		"From" : "Card Download",
+		"Subject" : "Add a card to your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Pick a card. Any card!""",
+		r"""Pick a card. Any card!""",
 		"Type" : "AddCard",
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Get rid of a card",
+		"From" : "Card Removal",
+		"Subject" : "Remove a card from your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Leave a card. Any card!""",
+		r"""Leave a card. Any card!""",
 		"Type" : "RemoveCard",
 	},
 	{
 		"From" : "Boss",
-		"Subject" : "Level3",
+		"Subject" : "Level 3",
 		"Content" : 
-		r"""CoolTestMessage""",
+		r"""Dear Employee,
+		Hey nice work with that last job. Your reward? More work! Get it done.""",
 		"Type" : "Level",
 		"LevelID" : 2
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Add a card or something IDK",
+		"From" : "Card Download",
+		"Subject" : "Add a card to your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Pick a card. Any card!""",
+		r"""Pick a card. Any card!""",
 		"Type" : "AddCard",
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Get rid of a card",
+		"From" : "Card Removal",
+		"Subject" : "Remove a card from your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Leave a card. Any card!""",
+		r"""Leave a card. Any card!""",
 		"Type" : "RemoveCard",
 	},
 	{
 		"From" : "Boss",
-		"Subject" : "Level4",
+		"Subject" : "Level 4",
 		"Content" : 
-		r"""CoolTestMessage""",
+		r"""Dear Employee,
+		You're actually doing better than I expected. Guess I should give you harder jobs then, huh?""",
 		"Type" : "Level",
 		"LevelID" : 3
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Add a card or something IDK",
+		"From" : "Card Download",
+		"Subject" : "Add a card to your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Pick a card. Any card!""",
+		r"""Pick a card. Any card!""",
 		"Type" : "AddCard",
 	},
 	{
-		"From" : "Boss",
-		"Subject" : "Get rid of a card",
+		"From" : "Card Removal",
+		"Subject" : "Remove a card from your deck!",
 		"Content" : 
-		r"""Dear Employee,
-		Leave a card. Any card!""",
+		r"""Leave a card. Any card!""",
 		"Type" : "RemoveCard",
 	},
 	{
 		"From" : "Boss",
-		"Subject" : "Level5",
+		"Subject" : "Level 5",
 		"Content" : 
-		r"""CoolTestMessage""",
+		r"""Dear Employee,
+		Last job for the day newbie. This one's real important. Don't. Mess. It. Up.""",
 		"Type" : "Level",
 		"LevelID" : 4
 	},
@@ -136,7 +132,8 @@ var emails = [
 		"From" : "Boss",
 		"Subject" : "Good Job",
 		"Content" : 
-		r"""You won!""",
+		r"""Dear Employee,
+		Nice work with the Conscious.net today! I'll be expecting great things from you in the future.""",
 		"Type" : "Info"
 	}
 ]

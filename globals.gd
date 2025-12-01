@@ -82,22 +82,22 @@ var levels = [
 	},
 	{
 		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
-		"Name" : "Level1.exe",
+		"Name" : "Level2.exe",
 		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_fast", 4]]
 	},
 	{
 		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
-		"Name" : "Level1.exe",
+		"Name" : "Level3.exe",
 		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_tank", 4]]
 	},
 	{
 		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
-		"Name" : "Level1.exe",
+		"Name" : "Level4.exe",
 		"Freqs" : [["e_melee", 2], ["e_heavy", 4], ["e_fast", 4]]
 	},
 	{
 		"Icon" : "res://UI/Icons/32x32_Game_Shortcut.png",
-		"Name" : "Level1.exe",
+		"Name" : "Level5.exe",
 		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_heavy", 2], ["e_fast", 4]]
 	},
 ]
@@ -485,7 +485,7 @@ var card_list = [
 	[CardHeal, 1],
 	[CardDivide, 2],
 	
-	[CardExplode, 1],
+	#[CardExplode, 1],
 	[CardMassHeal, 2],
 	[CardPeasants, 1],
 	[CardPush, 2],
