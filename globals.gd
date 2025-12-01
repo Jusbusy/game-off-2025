@@ -56,7 +56,7 @@ var levels = [
 	{
 		"Icon" : "res://UI/Icons/Card_Divide.png",
 		"Name" : "Level1.exe",
-		"Freqs" : [["e_melee", 2]]
+		"Freqs" : [["e_melee", 2], ["e_melee", 2], ["e_tank", 2]]
 	},
 	{
 		"Icon" : "res://UI/Icons/Card_Divide.png",
@@ -107,7 +107,7 @@ var starter_deck = [
 	CardMove.new(), CardMove.new(),
 	CardUnitMelee.new(), CardUnitMelee.new(),
 	CardHeal.new(), CardHeal.new(), CardHeal.new(), CardHeal.new(),
-	CardPeasants.new()
+	CardUnitShield.new(), CardSwap.new()
 ]
 var deck = []
 var draw = []
