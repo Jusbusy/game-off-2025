@@ -2,6 +2,8 @@ class_name Unit extends GridElement
 
 @export var enemy : bool
 @export var max_health : int = 2
+@export var can_move: bool = true
+@export var attack_dmg: Vector2i = Vector2i(1, 2)
 
 var forward : Vector2i:
 	get:
@@ -67,14 +69,14 @@ func _try_attack():
 	if attack_form == AttackForm.ROCK && enemy_attack_form == AttackForm.SCISSORS || \
 	   attack_form == AttackForm.PAPER && enemy_attack_form == AttackForm.ROCK || \
 	   attack_form == AttackForm.SCISSORS && enemy_attack_form == AttackForm.PAPER:
-		elem.health -= 2
+		elem.health -= attack_dmg.y
 	else:
-		elem.health -= 1
+		elem.health -= attack_dmg.x
 	
 	play_blocking_animation("attack")
 	
 func _try_move_turn(allow_battle_move, allow_auto_move = true):
-	if health <= 0:
+	if health <= 0 || !can_move:
 		return false
 	var elem = get_local(forward)
 	if (!elem && allow_auto_move) || (elem && elem.health <= 0 && enemy != elem.enemy && allow_battle_move):

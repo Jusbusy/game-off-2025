@@ -9,7 +9,7 @@ func get_cost():
 	return 1
 func get_selection_rules():
 	return [
-		{"flags" : [SLCT_FRIEND]}, 
+		{"flags" : [SLCT_FRIEND, SLCT_CAN_MOVE]}, 
 		{"adjacents" : [Vector2i(-1, 0), Vector2i(1, 0), Vector2i(0, -1), Vector2i(0, 1)], "flags" : [SLCT_EMPTY]}
 	]
 

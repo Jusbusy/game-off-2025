@@ -29,6 +29,7 @@ const SLCT_FRIEND = 1 << 1
 const SLCT_ENEMY = 1 << 2
 const SLCT_FRIEND_SPAWN = 1 << 3
 const SLCT_ENEMY_SPAWN = 1 << 4
+const SLCT_CAN_MOVE = 1 << 5
 
 var _select_id = 0
 var _curr_selections = []
@@ -70,6 +71,8 @@ func check_selection(pos: Vector2i):
 			selected_flags = selected_flags | SLCT_FRIEND
 		else:
 			selected_flags = selected_flags | SLCT_ENEMY
+		if elem.can_move:
+			selected_flags = selected_flags | SLCT_CAN_MOVE
 	if pos.x == 0:
 		selected_flags = selected_flags | SLCT_FRIEND_SPAWN
 	if pos.x == Global.grid_size.x - 1:
