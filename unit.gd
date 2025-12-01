@@ -132,3 +132,15 @@ func play_move_animation(start_pos: Vector2i, target_pos: Vector2i):
 	
 	position = Global.grid_origin + Global.grid_spacing * target_pos
 	Global.blocking_animations -= 1
+
+func kill():
+	get_node("MainSprite").visible = false
+	get_node("AttackIcon").visible = false
+	get_node("HealthBarSprite").visible = false
+	get_node("SpawnSprite").play()
+	
+	get_node("SpawnSprite").animation_finished.connect(
+		func(): 
+			self.queue_free(),
+		CONNECT_ONE_SHOT
+	)

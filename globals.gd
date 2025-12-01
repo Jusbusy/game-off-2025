@@ -263,7 +263,7 @@ func _process(_delta):
 		
 		TurnPhase.BASE: # Handle attacks to bases
 			for elem in death_queue: # Remove dead units
-				elem.queue_free()
+				elem.kill()
 				death_queue = []
 			
 			for elem in grid[grid_size.x - 1]:
@@ -275,7 +275,7 @@ func _process(_delta):
 							enemy_base_health -= elem.health
 							if enemy_base_health <= 0:
 								level_over = true
-							elem.queue_free()
+							elem.kill()
 					)
 			for elem in grid[0]:
 				if elem && elem.enemy:
@@ -284,7 +284,7 @@ func _process(_delta):
 						func():
 							get_tree().root.get_node("Game/AudioBaseHit").play()
 							player_base_health -= elem.health
-							elem.queue_free()
+							elem.kill()
 					)
 			
 			player_ap = turn_ap
