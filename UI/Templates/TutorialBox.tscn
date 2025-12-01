@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvef22y047sid"]
+
+[ext_resource type="FontFile" uid="uid://jw8k7mo7i83q" path="res://UI/W95FA.otf" id="1_3hc3m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0jpo"]
+bg_color = Color(1, 0.5951299, 0.81305677, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="Panel" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0jpo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_3hc3m")
+theme_override_font_sizes/font_size = 13
+text = "Test"
+autowrap_mode = 2
