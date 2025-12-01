@@ -4,6 +4,7 @@ class_name Unit extends GridElement
 @export var max_health : int = 2
 @export var can_move: bool = true
 @export var attack_dmg: Vector2i = Vector2i(1, 2)
+@export var move_speed = 1
 
 var forward : Vector2i:
 	get:
@@ -80,9 +81,20 @@ func _try_attack():
 func _try_move_turn(allow_battle_move, allow_auto_move = true):
 	if health <= 0 || !can_move:
 		return false
-	var elem = get_local(forward)
-	if (!elem && allow_auto_move) || (elem && elem.health <= 0 && enemy != elem.enemy && allow_battle_move):
-		move(grid_pos + forward)
+	var mov_dist = 0
+	for i in range(move_speed):
+		var target_pos = forward * (i + 1)
+		if !Rect2i(Vector2i.ZERO, Global.grid_size).has_point(grid_pos + target_pos):
+			break
+		var elem = get_local(target_pos)
+		if (!elem && allow_auto_move) || (elem && elem.health <= 0 && enemy != elem.enemy && allow_battle_move):
+			mov_dist += 1
+		else:
+			break
+	if enemy:
+		print(mov_dist)
+	if mov_dist > 0:
+		move(grid_pos + forward * mov_dist)
 		return true
 	return false
 
