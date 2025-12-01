@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Divide.png")
 func get_name():
 	return "Divide"
+func get_desc():
+	return r"""Select a friendly unit and an adjacent tile.
+	Unit will be split into two units at half health."""
 
 func get_cost():
 	return 1

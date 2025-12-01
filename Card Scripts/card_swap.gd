@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Move.png")
 func get_name():
 	return "Swap"
+func get_desc():
+	return r"""Select a friendly unit and an enemy in front of it.
+	Unit and enemy will swap positions."""
 
 func get_cost():
 	return 1

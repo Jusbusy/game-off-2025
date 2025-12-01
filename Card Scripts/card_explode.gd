@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Divide.png")
 func get_name():
 	return "Explode"
+func get_desc():
+	return r"""Select a friendly unit.
+	Unit will be killed and deal damage equal to its health to all enemies in the lane."""
 
 func get_cost():
 	return 2

@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Divide.png")
 func get_name():
 	return "Reinforcements"
+func get_desc():
+	return r"""Select a friendly unit and a tile the leftmost column.
+	A copy of the selected unit will be spawned at full health on the selected tile."""
 
 func get_cost():
 	return 1

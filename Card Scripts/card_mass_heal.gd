@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Divide.png")
 func get_name():
 	return "Mass Heal"
+func get_desc():
+	return r"""Select a friendly unit.
+	All units in the column will be healed for 1 health."""
 
 func get_cost():
 	return 2

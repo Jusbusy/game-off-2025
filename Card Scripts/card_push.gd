@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Move.png")
 func get_name():
 	return "Push"
+func get_desc():
+	return r"""Select a friendly unit and an enemy in front of it.
+	Enemy will be pushed back one tile. If this is impossible, they will take 1 damage instead."""
 
 func get_cost():
 	return 1

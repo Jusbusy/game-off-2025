@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Melee.png")
 func get_name():
 	return "Spawn Melee"
+func get_desc():
+	return r"""Select a tile in the leftmost column.
+	Spawns a 2 health melee unit on the selected tile."""
 
 func get_cost():
 	return 1

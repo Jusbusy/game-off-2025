@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Move.png")
 func get_name():
 	return "Move"
+func get_desc():
+	return r"""Select a friendly unit and an adjacent tile.
+	Unit will move to the selected tile."""
 
 func get_cost():
 	return 1

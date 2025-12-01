@@ -12,4 +12,5 @@ border_blend = true
 [node name="RichTextLabel" type="Label"]
 offset_right = 3.0
 offset_bottom = 25.0
+theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = SubResource("StyleBoxFlat_t3xtj")

@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Melee.png")
 func get_name():
 	return "Spawn Shield"
+func get_desc():
+	return r"""Select a friendly unit and an adjacent tile.
+	Spawns a 4 health shield unit on the selected tile which cannot move by any means."""
 
 func get_cost():
 	return 1

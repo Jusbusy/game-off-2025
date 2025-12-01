@@ -4,6 +4,9 @@ func get_icon():
 	return load("res://UI/Icons/Card_Divide.png")
 func get_name():
 	return "Peasants"
+func get_desc():
+	return r"""Select a friendly unit.
+	A 1 health unit will be spawned in every empty space of the column."""
 
 func get_cost():
 	return 2
